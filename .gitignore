@@ -1,0 +1,10 @@
+.DS_Store
+.env*
+.output
+.vinxi
+.wireit
+*.local
+*.tsbuildinfo
+dist
+dist-ssr
+node_modules
