@@ -1,7 +1,8 @@
 import { Link, useLocation } from "@tanstack/react-router";
 import type { User } from "better-auth";
 import { ArrowRightIcon, MenuIcon, UserIcon } from "lucide-react";
-import { useCallback, useMemo } from "react";
+import { useMemo } from "react";
+import { twMerge } from "tailwind-merge";
 import { config } from "@/config";
 
 type NavbarProps = {
@@ -12,22 +13,15 @@ export function Navbar(props: NavbarProps) {
   const { user } = props;
   const { pathname } = useLocation();
 
-  const activeClass = useCallback(
-    (path: string) => {
-      if (path === pathname) {
-        return "bg-base-200 font-bold";
-      }
-      return undefined;
-    },
-    [pathname],
-  );
-
   const menu = useMemo(() => {
     if (user) {
       return (
         <>
           <li>
-            <Link to="/app" className={activeClass("/app")}>
+            <Link
+              to="/app"
+              className={twMerge(pathname === "/app" && "menu-active")}
+            >
               Home
             </Link>
           </li>
@@ -51,19 +45,22 @@ export function Navbar(props: NavbarProps) {
     return (
       <>
         <li>
-          <Link to="/" className={activeClass("/")}>
+          <Link to="/" className={twMerge(pathname === "/" && "menu-active")}>
             Home
           </Link>
         </li>
         <li>
-          <Link to="/get-started" className={activeClass("/get-started")}>
+          <Link
+            to="/get-started"
+            className={twMerge(pathname === "/get-started" && "menu-active")}
+          >
             Get Started
             <ArrowRightIcon className="h-4 w-4" />
           </Link>
         </li>
       </>
     );
-  }, [activeClass, user]);
+  }, [pathname, user]);
 
   return (
     <div className="border-b-base-300 border-b">
