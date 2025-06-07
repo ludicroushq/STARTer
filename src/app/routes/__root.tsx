@@ -8,16 +8,13 @@ import {
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
+import interCss from "@fontsource-variable/inter/wght.css?url";
+import interTightCss from "@fontsource-variable/inter-tight/wght.css?url";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
 import { client } from "@/server/client";
 import appCss from "@/app/styles.css?url";
 import { config } from "@/config";
-
-// @ts-expect-error - side effect import
-import "@fontsource-variable/inter";
-// @ts-expect-error - side effect import
-import "@fontsource-variable/inter-tight";
 
 export const Route = createRootRoute({
   beforeLoad: async () => {
@@ -34,6 +31,14 @@ export const Route = createRootRoute({
     links: [
       {
         href: appCss,
+        rel: "stylesheet",
+      },
+      {
+        href: interCss,
+        rel: "stylesheet",
+      },
+      {
+        href: interTightCss,
         rel: "stylesheet",
       },
       {
