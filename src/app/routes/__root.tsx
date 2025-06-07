@@ -12,6 +12,7 @@ import interCss from "@fontsource-variable/inter/wght.css?url";
 import interTightCss from "@fontsource-variable/inter-tight/wght.css?url";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
+import { NotFound } from "./-components/not-found";
 import { client } from "@/server/client";
 import appCss from "@/app/styles.css?url";
 import { config } from "@/config";
@@ -27,6 +28,7 @@ export const Route = createRootRoute({
       user: context.user,
     };
   },
+  notFoundComponent: NotFound,
   head: () => ({
     links: [
       {
