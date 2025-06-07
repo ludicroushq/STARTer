@@ -71,7 +71,7 @@ function RootComponent() {
 
   return (
     <RootDocument>
-      <Navbar user={user} />
+      <Navbar user={user ?? null} />
       <main className="flex-grow">
         <Outlet />
       </main>

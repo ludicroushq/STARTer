@@ -1,12 +1,12 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import type { User } from "better-auth";
 import { ArrowRightIcon, MenuIcon, UserIcon } from "lucide-react";
 import { useMemo } from "react";
 import { twMerge } from "tailwind-merge";
+import type { Outputs } from "@/server/types";
 import { config } from "@/config";
 
 type NavbarProps = {
-  user: User | undefined;
+  user: NonNullable<Outputs["auth"]["getSession"]>["user"] | null;
 };
 
 export function Navbar(props: NavbarProps) {
