@@ -15,7 +15,7 @@ import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
 import { NotFound } from "./-components/not-found";
 import { client } from "@/server/client";
-import appCss from "@/app/styles.css?url";
+import appCss from "@/styles.css?url";
 import { config } from "@/config";
 
 export const Route = createRootRoute({
