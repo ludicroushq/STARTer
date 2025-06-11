@@ -32,6 +32,12 @@ export function Navbar(props: NavbarProps) {
                 <UserIcon className="size-5" />
               </summary>
               <ul className="w-max md:top-5 md:right-0">
+                <li className="pointer-events-none">
+                  <div className="flex flex-col items-start gap-0">
+                    <div className="font-bold">{user.name}</div>
+                    <div className="text-xs">{user.email}</div>
+                  </div>
+                </li>
                 <li>
                   <Link to="/sign-out">Sign Out</Link>
                 </li>
