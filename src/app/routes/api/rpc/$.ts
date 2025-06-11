@@ -1,9 +1,6 @@
-import { RPCHandler } from "@orpc/server/fetch";
 import { createAPIFileRoute } from "@tanstack/react-start/api";
 import { getContext } from "@/server/context";
-import { router } from "@/server/routes";
-
-const handler = new RPCHandler(router);
+import { handler } from "@/server/handler";
 
 async function handle({ request }: { request: Request }) {
   const { response } = await handler.handle(request, {

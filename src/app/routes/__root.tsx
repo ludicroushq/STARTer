@@ -10,6 +10,7 @@ import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
 import interCss from "@fontsource-variable/inter/wght.css?url";
 import interTightCss from "@fontsource-variable/inter-tight/wght.css?url";
+import { Toaster } from "react-hot-toast";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
 import { NotFound } from "./-components/not-found";
@@ -84,6 +85,7 @@ function RootComponent() {
       </main>
       <Footer />
 
+      <Toaster />
       <TanStackRouterDevtools />
     </RootDocument>
   );

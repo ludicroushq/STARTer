@@ -1,6 +1,8 @@
 import { twMerge } from "tailwind-merge";
-import { z } from "zod/v4";
+import { z } from "zod";
+import { fromError } from "zod-validation-error";
 import { useFieldContext } from "../context";
+import { messageBuilder } from "@/lib/zod-validation-error/message-builder";
 
 type TextFieldProps = {
   label: string;
@@ -29,11 +31,10 @@ export function TextField(props: TextFieldProps) {
         onChange={(e) => field.handleChange(e.target.value)}
       />
       <p className="text-error">
-        {
-          z
-            .prettifyError(new z.ZodError(field.state.meta.errors))
-            .split("\n")[0]
-        }
+        {!field.state.meta.isValid &&
+          fromError(new z.ZodError(field.state.meta.errors), {
+            messageBuilder,
+          }).toString()}
       </p>
     </fieldset>
   );
