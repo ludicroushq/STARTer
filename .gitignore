@@ -1,7 +1,8 @@
 .DS_Store
 .env*
+.nitro
 .output
-.vinxi
+.tanstack
 .wireit
 *.local
 *.tsbuildinfo
