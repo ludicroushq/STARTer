@@ -43,6 +43,6 @@
   h4,
   h5,
   h6 {
-    @apply font-display;
+    @apply font-display text-pretty;
   }
 }

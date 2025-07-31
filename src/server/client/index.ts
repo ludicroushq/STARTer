@@ -7,6 +7,7 @@ import { createIsomorphicFn } from "@tanstack/react-start";
 import toast from "react-hot-toast";
 import { router } from "@/server/routes";
 import { getContext } from "@/server/context";
+import { logger } from "@/lib/logtape";
 
 const getORPCClient = createIsomorphicFn()
   .server(() =>
@@ -26,10 +27,16 @@ const getORPCClient = createIsomorphicFn()
       url: `${window.location.origin}/api/rpc`,
       interceptors: [
         onError((error) => {
-          if (error instanceof ORPCError) {
-            toast.error(error.message);
+          if (error instanceof Error && error.name === "AbortError") {
+            return;
           }
 
+          if (error instanceof ORPCError) {
+            toast.error(error.message);
+            return;
+          }
+
+          logger.error`${error}`;
           toast.error("An unexpected error occurred.");
         }),
       ],
@@ -40,4 +47,4 @@ const getORPCClient = createIsomorphicFn()
 
 export const client: RouterClient<typeof router> = getORPCClient();
 
-export const orpcQuery = createTanstackQueryUtils(client);
+export const orpc = createTanstackQueryUtils(client);

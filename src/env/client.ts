@@ -5,4 +5,5 @@ export const env = createEnv({
   clientPrefix: "VITE_",
   emptyStringAsUndefined: true,
   runtimeEnv: process.env,
+  skipValidation: process.env.NODE_ENV === "test",
 });

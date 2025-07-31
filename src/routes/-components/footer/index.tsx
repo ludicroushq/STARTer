@@ -11,18 +11,6 @@ export function Footer() {
             <h6 className="footer-title">
               &copy; {year} {config.name}. All rights reserved.
             </h6>
-            <aside>
-              Powered by{" "}
-              <a
-                className="link-hover link"
-                href="https://www.xnext.dev"
-                target="_blank"
-                rel="noreferrer"
-              >
-                xNext
-              </a>
-              .
-            </aside>
           </nav>
         </footer>
       </div>

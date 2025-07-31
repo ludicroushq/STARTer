@@ -11,5 +11,6 @@ export default defineConfig({
   migrations: {
     prefix: "timestamp",
   },
+  out: "./src/db/migrations",
   schema: "./src/db/schema/index.ts",
 });

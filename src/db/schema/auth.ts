@@ -11,7 +11,7 @@ export const users = pgTable("users", {
 
 export const sessions = pgTable("sessions", {
   ...shared,
-  expiresAt: timestamp().notNull(),
+  expiresAt: timestamp({ withTimezone: true }).notNull(),
   ipAddress: text(),
   token: text().notNull().unique(),
   userAgent: text(),
@@ -23,13 +23,13 @@ export const sessions = pgTable("sessions", {
 export const accounts = pgTable("accounts", {
   ...shared,
   accessToken: text(),
-  accessTokenExpiresAt: timestamp(),
+  accessTokenExpiresAt: timestamp({ withTimezone: true }),
   accountId: text().notNull(),
   idToken: text(),
   password: text(),
   providerId: text().notNull(),
   refreshToken: text(),
-  refreshTokenExpiresAt: timestamp(),
+  refreshTokenExpiresAt: timestamp({ withTimezone: true }),
   scope: text(),
   userId: text()
     .notNull()
@@ -38,7 +38,7 @@ export const accounts = pgTable("accounts", {
 
 export const verifications = pgTable("verifications", {
   ...shared,
-  expiresAt: timestamp().notNull(),
+  expiresAt: timestamp({ withTimezone: true }).notNull(),
   identifier: text().notNull(),
   value: text().notNull(),
 });

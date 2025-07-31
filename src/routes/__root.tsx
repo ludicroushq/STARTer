@@ -1,26 +1,32 @@
 import interTightWoff2 from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
+import interTightCss from "@fontsource-variable/inter-tight/wght.css?url";
 import interWoff2 from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
+import interCss from "@fontsource-variable/inter/wght.css?url";
+import type { QueryClient } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import {
   HeadContent,
   Outlet,
   Scripts,
-  createRootRoute,
+  createRootRouteWithContext,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
-import interCss from "@fontsource-variable/inter/wght.css?url";
-import interTightCss from "@fontsource-variable/inter-tight/wght.css?url";
 import { Toaster } from "react-hot-toast";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
 import { NotFound } from "./-components/not-found";
-import { client } from "@/server/client";
 import appCss from "@/styles.css?url";
+import { orpc } from "@/server/client";
 import { config } from "@/config";
 
-export const Route = createRootRoute({
-  beforeLoad: async () => {
-    const session = await client.auth.getSession();
+export const Route = createRootRouteWithContext<{
+  queryClient: QueryClient;
+}>()({
+  beforeLoad: async ({ context }) => {
+    const session = await context.queryClient.fetchQuery(
+      orpc.auth.getSession.queryOptions(),
+    );
     return { user: session?.user };
   },
   component: RootComponent,
@@ -86,7 +92,8 @@ function RootComponent() {
       <Footer />
 
       <Toaster />
-      <TanStackRouterDevtools />
+      <TanStackRouterDevtools position="bottom-right" />
+      <ReactQueryDevtools buttonPosition="bottom-left" />
     </RootDocument>
   );
 }

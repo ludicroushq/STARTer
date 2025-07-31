@@ -1,4 +1,4 @@
 export const config = {
-  baseURL: "https://www.TODO.com",
+  baseUrl: "https://www.TODO.com",
   name: "TODO",
 };
