@@ -15,6 +15,7 @@ configure({
       sinks: ["console"],
     },
   ],
+  reset: true,
 });
 
 export const logger = getLogger();
