@@ -8,314 +8,231 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createServerRootRoute } from "@tanstack/react-start/server";
+import { createServerRootRoute } from '@tanstack/react-start/server'
 
-import { Route as rootRouteImport } from "./routes/__root";
-import { Route as UnauthenticatedRouteImport } from "./routes/_unauthenticated";
-import { Route as AuthenticatedRouteImport } from "./routes/_authenticated";
-import { Route as UnauthenticatedIndexRouteImport } from "./routes/_unauthenticated/index";
-import { Route as UnauthenticatedGetStartedIndexRouteImport } from "./routes/_unauthenticated/get-started/index";
-import { Route as AuthenticatedSignOutIndexRouteImport } from "./routes/_authenticated/sign-out/index";
-import { Route as AuthenticatedAppIndexRouteImport } from "./routes/_authenticated/app/index";
-import { ServerRoute as ApiRpcIndexServerRouteImport } from "./routes/api/rpc/index";
-import { ServerRoute as ApiRpcSplatServerRouteImport } from "./routes/api/rpc/$";
-import { ServerRoute as ApiAuthSplatServerRouteImport } from "./routes/api/auth/$";
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as UnauthenticatedRouteImport } from './routes/_unauthenticated'
+import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
+import { Route as UnauthenticatedIndexRouteImport } from './routes/_unauthenticated/index'
+import { Route as UnauthenticatedGetStartedIndexRouteImport } from './routes/_unauthenticated/get-started/index'
+import { Route as AuthenticatedSignOutIndexRouteImport } from './routes/_authenticated/sign-out/index'
+import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app/index'
+import { ServerRoute as ApiRpcSplatServerRouteImport } from './routes/api/rpc/$'
+import { ServerRoute as ApiAuthSplatServerRouteImport } from './routes/api/auth/$'
 
-const rootServerRouteImport = createServerRootRoute();
+const rootServerRouteImport = createServerRootRoute()
 
 const UnauthenticatedRoute = UnauthenticatedRouteImport.update({
-  id: "/_unauthenticated",
+  id: '/_unauthenticated',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const AuthenticatedRoute = AuthenticatedRouteImport.update({
-  id: "/_authenticated",
+  id: '/_authenticated',
   getParentRoute: () => rootRouteImport,
-} as any);
+} as any)
 const UnauthenticatedIndexRoute = UnauthenticatedIndexRouteImport.update({
-  id: "/",
-  path: "/",
+  id: '/',
+  path: '/',
   getParentRoute: () => UnauthenticatedRoute,
-} as any);
+} as any)
 const UnauthenticatedGetStartedIndexRoute =
   UnauthenticatedGetStartedIndexRouteImport.update({
-    id: "/get-started/",
-    path: "/get-started/",
+    id: '/get-started/',
+    path: '/get-started/',
     getParentRoute: () => UnauthenticatedRoute,
-  } as any);
+  } as any)
 const AuthenticatedSignOutIndexRoute =
   AuthenticatedSignOutIndexRouteImport.update({
-    id: "/sign-out/",
-    path: "/sign-out/",
+    id: '/sign-out/',
+    path: '/sign-out/',
     getParentRoute: () => AuthenticatedRoute,
-  } as any);
+  } as any)
 const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
-  id: "/app/",
-  path: "/app/",
+  id: '/app/',
+  path: '/app/',
   getParentRoute: () => AuthenticatedRoute,
-} as any);
-const ApiRpcIndexServerRoute = ApiRpcIndexServerRouteImport.update({
-  id: "/api/rpc/",
-  path: "/api/rpc/",
-  getParentRoute: () => rootServerRouteImport,
-} as any);
+} as any)
 const ApiRpcSplatServerRoute = ApiRpcSplatServerRouteImport.update({
-  id: "/api/rpc/$",
-  path: "/api/rpc/$",
+  id: '/api/rpc/$',
+  path: '/api/rpc/$',
   getParentRoute: () => rootServerRouteImport,
-} as any);
+} as any)
 const ApiAuthSplatServerRoute = ApiAuthSplatServerRouteImport.update({
-  id: "/api/auth/$",
-  path: "/api/auth/$",
+  id: '/api/auth/$',
+  path: '/api/auth/$',
   getParentRoute: () => rootServerRouteImport,
-} as any);
+} as any)
 
 export interface FileRoutesByFullPath {
-  "": typeof UnauthenticatedRouteWithChildren;
-  "/": typeof UnauthenticatedIndexRoute;
-  "/app": typeof AuthenticatedAppIndexRoute;
-  "/sign-out": typeof AuthenticatedSignOutIndexRoute;
-  "/get-started": typeof UnauthenticatedGetStartedIndexRoute;
+  '/': typeof UnauthenticatedIndexRoute
+  '/app': typeof AuthenticatedAppIndexRoute
+  '/sign-out': typeof AuthenticatedSignOutIndexRoute
+  '/get-started': typeof UnauthenticatedGetStartedIndexRoute
 }
 export interface FileRoutesByTo {
-  "": typeof AuthenticatedRouteWithChildren;
-  "/": typeof UnauthenticatedIndexRoute;
-  "/app": typeof AuthenticatedAppIndexRoute;
-  "/sign-out": typeof AuthenticatedSignOutIndexRoute;
-  "/get-started": typeof UnauthenticatedGetStartedIndexRoute;
+  '/': typeof UnauthenticatedIndexRoute
+  '/app': typeof AuthenticatedAppIndexRoute
+  '/sign-out': typeof AuthenticatedSignOutIndexRoute
+  '/get-started': typeof UnauthenticatedGetStartedIndexRoute
 }
 export interface FileRoutesById {
-  __root__: typeof rootRouteImport;
-  "/_authenticated": typeof AuthenticatedRouteWithChildren;
-  "/_unauthenticated": typeof UnauthenticatedRouteWithChildren;
-  "/_unauthenticated/": typeof UnauthenticatedIndexRoute;
-  "/_authenticated/app/": typeof AuthenticatedAppIndexRoute;
-  "/_authenticated/sign-out/": typeof AuthenticatedSignOutIndexRoute;
-  "/_unauthenticated/get-started/": typeof UnauthenticatedGetStartedIndexRoute;
+  __root__: typeof rootRouteImport
+  '/_authenticated': typeof AuthenticatedRouteWithChildren
+  '/_unauthenticated': typeof UnauthenticatedRouteWithChildren
+  '/_unauthenticated/': typeof UnauthenticatedIndexRoute
+  '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
+  '/_authenticated/sign-out/': typeof AuthenticatedSignOutIndexRoute
+  '/_unauthenticated/get-started/': typeof UnauthenticatedGetStartedIndexRoute
 }
 export interface FileRouteTypes {
-  fileRoutesByFullPath: FileRoutesByFullPath;
-  fullPaths: "" | "/" | "/app" | "/sign-out" | "/get-started";
-  fileRoutesByTo: FileRoutesByTo;
-  to: "" | "/" | "/app" | "/sign-out" | "/get-started";
+  fileRoutesByFullPath: FileRoutesByFullPath
+  fullPaths: '/' | '/app' | '/sign-out' | '/get-started'
+  fileRoutesByTo: FileRoutesByTo
+  to: '/' | '/app' | '/sign-out' | '/get-started'
   id:
-    | "__root__"
-    | "/_authenticated"
-    | "/_unauthenticated"
-    | "/_unauthenticated/"
-    | "/_authenticated/app/"
-    | "/_authenticated/sign-out/"
-    | "/_unauthenticated/get-started/";
-  fileRoutesById: FileRoutesById;
+    | '__root__'
+    | '/_authenticated'
+    | '/_unauthenticated'
+    | '/_unauthenticated/'
+    | '/_authenticated/app/'
+    | '/_authenticated/sign-out/'
+    | '/_unauthenticated/get-started/'
+  fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren;
-  UnauthenticatedRoute: typeof UnauthenticatedRouteWithChildren;
+  AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
+  UnauthenticatedRoute: typeof UnauthenticatedRouteWithChildren
 }
 export interface FileServerRoutesByFullPath {
-  "/api/auth/$": typeof ApiAuthSplatServerRoute;
-  "/api/rpc/$": typeof ApiRpcSplatServerRoute;
-  "/api/rpc": typeof ApiRpcIndexServerRoute;
+  '/api/auth/$': typeof ApiAuthSplatServerRoute
+  '/api/rpc/$': typeof ApiRpcSplatServerRoute
 }
 export interface FileServerRoutesByTo {
-  "/api/auth/$": typeof ApiAuthSplatServerRoute;
-  "/api/rpc/$": typeof ApiRpcSplatServerRoute;
-  "/api/rpc": typeof ApiRpcIndexServerRoute;
+  '/api/auth/$': typeof ApiAuthSplatServerRoute
+  '/api/rpc/$': typeof ApiRpcSplatServerRoute
 }
 export interface FileServerRoutesById {
-  __root__: typeof rootServerRouteImport;
-  "/api/auth/$": typeof ApiAuthSplatServerRoute;
-  "/api/rpc/$": typeof ApiRpcSplatServerRoute;
-  "/api/rpc/": typeof ApiRpcIndexServerRoute;
+  __root__: typeof rootServerRouteImport
+  '/api/auth/$': typeof ApiAuthSplatServerRoute
+  '/api/rpc/$': typeof ApiRpcSplatServerRoute
 }
 export interface FileServerRouteTypes {
-  fileServerRoutesByFullPath: FileServerRoutesByFullPath;
-  fullPaths: "/api/auth/$" | "/api/rpc/$" | "/api/rpc";
-  fileServerRoutesByTo: FileServerRoutesByTo;
-  to: "/api/auth/$" | "/api/rpc/$" | "/api/rpc";
-  id: "__root__" | "/api/auth/$" | "/api/rpc/$" | "/api/rpc/";
-  fileServerRoutesById: FileServerRoutesById;
+  fileServerRoutesByFullPath: FileServerRoutesByFullPath
+  fullPaths: '/api/auth/$' | '/api/rpc/$'
+  fileServerRoutesByTo: FileServerRoutesByTo
+  to: '/api/auth/$' | '/api/rpc/$'
+  id: '__root__' | '/api/auth/$' | '/api/rpc/$'
+  fileServerRoutesById: FileServerRoutesById
 }
 export interface RootServerRouteChildren {
-  ApiAuthSplatServerRoute: typeof ApiAuthSplatServerRoute;
-  ApiRpcSplatServerRoute: typeof ApiRpcSplatServerRoute;
-  ApiRpcIndexServerRoute: typeof ApiRpcIndexServerRoute;
+  ApiAuthSplatServerRoute: typeof ApiAuthSplatServerRoute
+  ApiRpcSplatServerRoute: typeof ApiRpcSplatServerRoute
 }
 
-declare module "@tanstack/react-router" {
+declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    "/_authenticated": {
-      id: "/_authenticated";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof AuthenticatedRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/_unauthenticated": {
-      id: "/_unauthenticated";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: typeof UnauthenticatedRouteImport;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/_unauthenticated/": {
-      id: "/_unauthenticated/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: typeof UnauthenticatedIndexRouteImport;
-      parentRoute: typeof UnauthenticatedRoute;
-    };
-    "/api/auth/$": {
-      id: "/api/auth/$";
-      path: "";
-      fullPath: "/api/auth/$";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/api/rpc/$": {
-      id: "/api/rpc/$";
-      path: "";
-      fullPath: "/api/rpc/$";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootRouteImport;
-    };
-    "/_authenticated/app/": {
-      id: "/_authenticated/app/";
-      path: "/app";
-      fullPath: "/app";
-      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport;
-      parentRoute: typeof AuthenticatedRoute;
-    };
-    "/_authenticated/sign-out/": {
-      id: "/_authenticated/sign-out/";
-      path: "/sign-out";
-      fullPath: "/sign-out";
-      preLoaderRoute: typeof AuthenticatedSignOutIndexRouteImport;
-      parentRoute: typeof AuthenticatedRoute;
-    };
-    "/_unauthenticated/get-started/": {
-      id: "/_unauthenticated/get-started/";
-      path: "/get-started";
-      fullPath: "/get-started";
-      preLoaderRoute: typeof UnauthenticatedGetStartedIndexRouteImport;
-      parentRoute: typeof UnauthenticatedRoute;
-    };
-    "/api/rpc/": {
-      id: "/api/rpc/";
-      path: "";
-      fullPath: "/api/rpc";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootRouteImport;
-    };
+    '/_unauthenticated': {
+      id: '/_unauthenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof UnauthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: ''
+      preLoaderRoute: typeof AuthenticatedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_unauthenticated/': {
+      id: '/_unauthenticated/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof UnauthenticatedIndexRouteImport
+      parentRoute: typeof UnauthenticatedRoute
+    }
+    '/_unauthenticated/get-started/': {
+      id: '/_unauthenticated/get-started/'
+      path: '/get-started'
+      fullPath: '/get-started'
+      preLoaderRoute: typeof UnauthenticatedGetStartedIndexRouteImport
+      parentRoute: typeof UnauthenticatedRoute
+    }
+    '/_authenticated/sign-out/': {
+      id: '/_authenticated/sign-out/'
+      path: '/sign-out'
+      fullPath: '/sign-out'
+      preLoaderRoute: typeof AuthenticatedSignOutIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
+    '/_authenticated/app/': {
+      id: '/_authenticated/app/'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
+      parentRoute: typeof AuthenticatedRoute
+    }
   }
 }
-declare module "@tanstack/react-start/server" {
+declare module '@tanstack/react-start/server' {
   interface ServerFileRoutesByPath {
-    "/_authenticated": {
-      id: "/_authenticated";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/_unauthenticated": {
-      id: "/_unauthenticated";
-      path: "";
-      fullPath: "";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/_unauthenticated/": {
-      id: "/_unauthenticated/";
-      path: "/";
-      fullPath: "/";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/api/auth/$": {
-      id: "/api/auth/$";
-      path: "/api/auth/$";
-      fullPath: "/api/auth/$";
-      preLoaderRoute: typeof ApiAuthSplatServerRouteImport;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/api/rpc/$": {
-      id: "/api/rpc/$";
-      path: "/api/rpc/$";
-      fullPath: "/api/rpc/$";
-      preLoaderRoute: typeof ApiRpcSplatServerRouteImport;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/_authenticated/app/": {
-      id: "/_authenticated/app/";
-      path: "/app";
-      fullPath: "/app";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/_authenticated/sign-out/": {
-      id: "/_authenticated/sign-out/";
-      path: "/sign-out";
-      fullPath: "/sign-out";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/_unauthenticated/get-started/": {
-      id: "/_unauthenticated/get-started/";
-      path: "/get-started";
-      fullPath: "/get-started";
-      preLoaderRoute: unknown;
-      parentRoute: typeof rootServerRouteImport;
-    };
-    "/api/rpc/": {
-      id: "/api/rpc/";
-      path: "/api/rpc";
-      fullPath: "/api/rpc";
-      preLoaderRoute: typeof ApiRpcIndexServerRouteImport;
-      parentRoute: typeof rootServerRouteImport;
-    };
+    '/api/rpc/$': {
+      id: '/api/rpc/$'
+      path: '/api/rpc/$'
+      fullPath: '/api/rpc/$'
+      preLoaderRoute: typeof ApiRpcSplatServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
+    '/api/auth/$': {
+      id: '/api/auth/$'
+      path: '/api/auth/$'
+      fullPath: '/api/auth/$'
+      preLoaderRoute: typeof ApiAuthSplatServerRouteImport
+      parentRoute: typeof rootServerRouteImport
+    }
   }
 }
 
 interface AuthenticatedRouteChildren {
-  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute;
-  AuthenticatedSignOutIndexRoute: typeof AuthenticatedSignOutIndexRoute;
+  AuthenticatedAppIndexRoute: typeof AuthenticatedAppIndexRoute
+  AuthenticatedSignOutIndexRoute: typeof AuthenticatedSignOutIndexRoute
 }
 
 const AuthenticatedRouteChildren: AuthenticatedRouteChildren = {
   AuthenticatedAppIndexRoute: AuthenticatedAppIndexRoute,
   AuthenticatedSignOutIndexRoute: AuthenticatedSignOutIndexRoute,
-};
+}
 
 const AuthenticatedRouteWithChildren = AuthenticatedRoute._addFileChildren(
   AuthenticatedRouteChildren,
-);
+)
 
 interface UnauthenticatedRouteChildren {
-  UnauthenticatedIndexRoute: typeof UnauthenticatedIndexRoute;
-  UnauthenticatedGetStartedIndexRoute: typeof UnauthenticatedGetStartedIndexRoute;
+  UnauthenticatedIndexRoute: typeof UnauthenticatedIndexRoute
+  UnauthenticatedGetStartedIndexRoute: typeof UnauthenticatedGetStartedIndexRoute
 }
 
 const UnauthenticatedRouteChildren: UnauthenticatedRouteChildren = {
   UnauthenticatedIndexRoute: UnauthenticatedIndexRoute,
   UnauthenticatedGetStartedIndexRoute: UnauthenticatedGetStartedIndexRoute,
-};
+}
 
 const UnauthenticatedRouteWithChildren = UnauthenticatedRoute._addFileChildren(
   UnauthenticatedRouteChildren,
-);
+)
 
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   UnauthenticatedRoute: UnauthenticatedRouteWithChildren,
-};
+}
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
-  ._addFileTypes<FileRouteTypes>();
+  ._addFileTypes<FileRouteTypes>()
 const rootServerRouteChildren: RootServerRouteChildren = {
   ApiAuthSplatServerRoute: ApiAuthSplatServerRoute,
   ApiRpcSplatServerRoute: ApiRpcSplatServerRoute,
-  ApiRpcIndexServerRoute: ApiRpcIndexServerRoute,
-};
+}
 export const serverRouteTree = rootServerRouteImport
   ._addFileChildren(rootServerRouteChildren)
-  ._addFileTypes<FileServerRouteTypes>();
+  ._addFileTypes<FileServerRouteTypes>()
