@@ -5,10 +5,16 @@
   "scripts": {
     "build": "wireit",
     "dev": "wireit",
-    "prepare": "lefthook install",
+    "prepare": "husky",
     "start": "wireit",
     "test": "wireit",
     "test:ci": "wireit"
+  },
+  "lint-staged": {
+    "*": [
+      "eslint --max-warnings 0 --no-warn-ignored --fix",
+      "prettier --ignore-unknown --write"
+    ]
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.6",
@@ -56,7 +62,8 @@
     "eslint": "^9.29.0",
     "eslint-plugin-package-json": "^0.48.0",
     "eslint-plugin-react-hooks": "^5.2.0",
-    "lefthook": "^1.12.2",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.2",
     "neostandard": "^0.12.1",
     "prettier": "^3.5.3",
     "prettier-plugin-tailwindcss": "^0.6.12",
