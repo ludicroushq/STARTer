@@ -6,7 +6,7 @@ import { createTanstackQueryUtils } from "@orpc/tanstack-query";
 import { createIsomorphicFn } from "@tanstack/react-start";
 import toast from "react-hot-toast";
 import { router } from "@/server/routes";
-import { getContext } from "@/server/context";
+import { createContext } from "@/server/context";
 import { logger } from "@/lib/logtape";
 
 const getORPCClient = createIsomorphicFn()
@@ -19,7 +19,7 @@ const getORPCClient = createIsomorphicFn()
        * only include context that's safe to reuse globally.
        * For per-request context, use middleware context or pass a function as the initial context.
        */
-      context: getContext,
+      context: createContext,
     }),
   )
   .client((): RouterClient<typeof router> => {

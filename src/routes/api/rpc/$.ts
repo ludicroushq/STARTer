@@ -1,10 +1,10 @@
 import { createServerFileRoute } from "@tanstack/react-start/server";
-import { getContext } from "@/server/context";
+import { createContext } from "@/server/context";
 import { handler } from "@/server/handler";
 
 async function handle({ request }: { request: Request }) {
   const { response } = await handler.handle(request, {
-    context: await getContext(),
+    context: await createContext(),
     prefix: "/api/rpc",
   });
 

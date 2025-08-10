@@ -1,7 +1,8 @@
 import { ORPCError, os } from "@orpc/server";
-import type { getContext } from "./context";
+import type { createContext } from "./context";
 
-export const contextOs = os.$context<Awaited<ReturnType<typeof getContext>>>();
+export const contextOs =
+  os.$context<Awaited<ReturnType<typeof createContext>>>();
 
 export const unauthenticatedOs = contextOs.use(async ({ context, next }) => {
   const { user, session } = context;

@@ -2,7 +2,7 @@ import { getHeaders } from "@tanstack/react-start/server";
 import { cache } from "react";
 import { auth } from "@/auth";
 
-export const getContext = cache(async () => {
+export const createContext = cache(async () => {
   const headers = getHeaders();
 
   const session = await auth.api.getSession({
