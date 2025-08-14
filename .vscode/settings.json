@@ -1,24 +1,14 @@
 {
-  "files.watcherExclude": {
-    "**/routeTree.gen.ts": true
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "search.exclude": {
-    "**/routeTree.gen.ts": true
+  "[graphql]": {
+    "editor.defaultFormatter": "biomejs.biome"
   },
-  "files.readonlyInclude": {
-    "**/routeTree.gen.ts": true
-  },
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "[javascript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
   "[javascriptreact]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
   "[json]": {
@@ -27,18 +17,28 @@
   "[jsonc]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[css]": {
+  "[typescript]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "[graphql]": {
+  "[typescriptreact]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "typescript.tsdk": "node_modules/typescript/lib",
-  "editor.formatOnSave": true,
-  "editor.formatOnPaste": true,
-  "emmet.showExpandedAbbreviation": "never",
   "editor.codeActionsOnSave": {
     "source.fixAll.biome": "explicit",
     "source.organizeImports.biome": "explicit"
-  }
+  },
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "emmet.showExpandedAbbreviation": "never",
+  "files.readonlyInclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "files.watcherExclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "search.exclude": {
+    "**/routeTree.gen.ts": true
+  },
+  "typescript.tsdk": "node_modules/typescript/lib"
 }

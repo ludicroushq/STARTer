@@ -1,15 +1,4 @@
 {
-  "name": "TODO",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "wireit",
-    "dev": "wireit",
-    "prepare": "lefthook install",
-    "start": "wireit",
-    "test": "wireit",
-    "test:ci": "wireit"
-  },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.6",
     "@fontsource-variable/inter-tight": "^5.2.6",
@@ -59,7 +48,18 @@
     "vite-tsconfig-paths": "^5.1.4",
     "wireit": "^0.14.12"
   },
+  "name": "TODO",
   "packageManager": "pnpm@10.0.0",
+  "private": true,
+  "scripts": {
+    "build": "wireit",
+    "dev": "wireit",
+    "prepare": "lefthook install",
+    "start": "wireit",
+    "test": "wireit",
+    "test:ci": "wireit"
+  },
+  "type": "module",
   "wireit": {
     "build": {
       "dependencies": [
@@ -70,12 +70,6 @@
       "dependencies": [
         "start:dev"
       ]
-    },
-    "ultracite:format": {
-      "command": "ultracite format --unsafe"
-    },
-    "ultracite:lint": {
-      "command": "ultracite lint"
     },
     "start": {
       "dependencies": [
@@ -111,6 +105,12 @@
     },
     "typescript:check": {
       "command": "tsc --noEmit"
+    },
+    "ultracite:format": {
+      "command": "ultracite format --unsafe"
+    },
+    "ultracite:lint": {
+      "command": "ultracite lint"
     }
   }
 }
