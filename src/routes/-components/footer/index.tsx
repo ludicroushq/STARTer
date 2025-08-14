@@ -1,10 +1,10 @@
-import { config } from "@/config";
+import { config } from '@/config';
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="border-t-base-300 border-t py-6">
+    <div className="border-t border-t-base-300 py-6">
       <div className="container mx-auto">
         <footer className="footer">
           <nav>

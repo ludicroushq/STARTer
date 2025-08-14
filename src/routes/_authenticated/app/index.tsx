@@ -1,8 +1,8 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from '@tanstack/react-router';
 
-export const Route = createFileRoute("/_authenticated/app/")({
+export const Route = createFileRoute('/_authenticated/app/')({
   component: RouteComponent,
-  async loader({ context }) {
+  loader({ context }) {
     const { user } = context;
 
     return {

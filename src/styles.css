@@ -1,7 +1,10 @@
+/** biome-ignore-all lint/nursery/noUnknownAtRule: tailwind */
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 @plugin "daisyui" {
+  /* biome-ignore lint/correctness/noUnknownProperty: daisyui */
   themes: light --default;
+  /* biome-ignore lint/correctness/noUnknownProperty: daisyui */
   logs: false;
 }
 
@@ -26,9 +29,8 @@
   --font-inter: "Inter Variable";
   --font-inter-tight: "Inter Tight Variable";
   --font-sans:
-    var(--font-inter), ui-sans-serif, system-ui, sans-serif,
-    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
-    "Noto Color Emoji", "sans-serif";
+    var(--font-inter), ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji", "sans-serif";
   --font-display: var(--font-inter-tight), var(--font-sans);
 }
 

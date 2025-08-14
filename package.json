@@ -5,16 +5,10 @@
   "scripts": {
     "build": "wireit",
     "dev": "wireit",
-    "prepare": "husky",
+    "prepare": "lefthook install",
     "start": "wireit",
     "test": "wireit",
     "test:ci": "wireit"
-  },
-  "lint-staged": {
-    "*": [
-      "eslint --max-warnings 0 --no-warn-ignored --fix",
-      "prettier --ignore-unknown --write"
-    ]
   },
   "dependencies": {
     "@fontsource-variable/inter": "^5.2.6",
@@ -48,10 +42,9 @@
     "zod-validation-error": "^4.0.1"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.1.2",
     "@tailwindcss/typography": "^0.5.16",
     "@tailwindcss/vite": "^4.1.10",
-    "@tanstack/eslint-plugin-query": "^5.83.1",
-    "@tanstack/eslint-plugin-router": "^1.120.17",
     "@types/ms": "^2.1.0",
     "@types/pg": "^8.15.4",
     "@types/react": "^19.1.8",
@@ -59,16 +52,10 @@
     "@vitejs/plugin-react": "^4.7.0",
     "daisyui": "^5.0.43",
     "drizzle-kit": "^1.0.0-beta.1-c0277c0",
-    "eslint": "^9.29.0",
-    "eslint-plugin-package-json": "^0.48.0",
-    "eslint-plugin-react-hooks": "^5.2.0",
-    "husky": "^9.1.7",
-    "lint-staged": "^16.1.2",
-    "neostandard": "^0.12.1",
-    "prettier": "^3.5.3",
-    "prettier-plugin-tailwindcss": "^0.6.12",
+    "lefthook": "^1.12.3",
     "tailwindcss": "^4.1.10",
     "typescript": "^5.9.2",
+    "ultracite": "5.1.2",
     "vite-tsconfig-paths": "^5.1.4",
     "wireit": "^0.14.12"
   },
@@ -84,17 +71,11 @@
         "start:dev"
       ]
     },
-    "eslint:check": {
-      "command": "eslint --max-warnings 0 ."
+    "ultracite:format": {
+      "command": "ultracite format --unsafe"
     },
-    "eslint:fix": {
-      "command": "eslint --fix --max-warnings 0 ."
-    },
-    "prettier:check": {
-      "command": "prettier --check ."
-    },
-    "prettier:write": {
-      "command": "prettier --write ."
+    "ultracite:lint": {
+      "command": "ultracite lint"
     },
     "start": {
       "dependencies": [
@@ -118,15 +99,13 @@
     },
     "test": {
       "dependencies": [
-        "eslint:fix",
-        "prettier:write",
+        "ultracite:format",
         "typescript:check"
       ]
     },
     "test:ci": {
       "dependencies": [
-        "eslint:check",
-        "prettier:check",
+        "ultracite:lint",
         "typescript:check"
       ]
     },

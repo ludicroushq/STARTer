@@ -1,9 +1,7 @@
-import { CircleXIcon } from "lucide-react";
-import { useFormContext } from "../context";
+import { CircleXIcon } from 'lucide-react';
+import { useFormContext } from '../context';
 
-type ErrorAlertProps = {};
-
-export function ErrorAlert(props: ErrorAlertProps) {
+export function ErrorAlert() {
   const form = useFormContext();
 
   return (
@@ -14,14 +12,14 @@ export function ErrorAlert(props: ErrorAlertProps) {
     >
       {({ errors }) => {
         const message =
-          typeof errors.onSubmit === "string" ? errors.onSubmit : null;
+          typeof errors.onSubmit === 'string' ? errors.onSubmit : null;
 
         if (!message) {
           return null;
         }
 
         return (
-          <div role="alert" className="alert alert-soft alert-error">
+          <div className="alert alert-soft alert-error" role="alert">
             <CircleXIcon />
             <span>{message}</span>
           </div>

@@ -1,7 +1,7 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { config } from "@/config";
+import { createFileRoute } from '@tanstack/react-router';
+import { config } from '@/config';
 
-export const Route = createFileRoute("/_unauthenticated/")({
+export const Route = createFileRoute('/_unauthenticated/')({
   component: RouteComponent,
 });
 

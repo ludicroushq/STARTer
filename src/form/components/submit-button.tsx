@@ -1,6 +1,6 @@
-import { twMerge } from "tailwind-merge";
-import type { PropsWithChildren } from "react";
-import { useFormContext } from "../context";
+import type { PropsWithChildren } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { useFormContext } from '../context';
 
 type SubmitButtonProps = {
   className?: string;
@@ -13,13 +13,13 @@ export function SubmitButton(props: PropsWithChildren<SubmitButtonProps>) {
   return (
     <form.Subscribe
       selector={(state) => ({
-        isSubmitting: state.isSubmitting,
         canSubmit: state.canSubmit,
+        isSubmitting: state.isSubmitting,
       })}
     >
       {({ isSubmitting, canSubmit }) => (
         <button
-          className={twMerge("btn btn-neutral", className)}
+          className={twMerge('btn btn-neutral', className)}
           disabled={!canSubmit}
           type="submit"
         >

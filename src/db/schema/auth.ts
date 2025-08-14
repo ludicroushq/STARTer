@@ -1,7 +1,7 @@
-import { boolean, pgTable, text, timestamp } from "drizzle-orm/pg-core";
-import { shared } from "./shared";
+import { boolean, pgTable, text, timestamp } from 'drizzle-orm/pg-core';
+import { shared } from './shared';
 
-export const users = pgTable("users", {
+export const users = pgTable('users', {
   ...shared,
   email: text().notNull().unique(),
   emailVerified: boolean().notNull(),
@@ -9,7 +9,7 @@ export const users = pgTable("users", {
   name: text().notNull(),
 });
 
-export const sessions = pgTable("sessions", {
+export const sessions = pgTable('sessions', {
   ...shared,
   expiresAt: timestamp({ withTimezone: true }).notNull(),
   ipAddress: text(),
@@ -17,10 +17,10 @@ export const sessions = pgTable("sessions", {
   userAgent: text(),
   userId: text()
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => users.id, { onDelete: 'cascade' }),
 });
 
-export const accounts = pgTable("accounts", {
+export const accounts = pgTable('accounts', {
   ...shared,
   accessToken: text(),
   accessTokenExpiresAt: timestamp({ withTimezone: true }),
@@ -33,10 +33,10 @@ export const accounts = pgTable("accounts", {
   scope: text(),
   userId: text()
     .notNull()
-    .references(() => users.id, { onDelete: "cascade" }),
+    .references(() => users.id, { onDelete: 'cascade' }),
 });
 
-export const verifications = pgTable("verifications", {
+export const verifications = pgTable('verifications', {
   ...shared,
   expiresAt: timestamp({ withTimezone: true }).notNull(),
   identifier: text().notNull(),

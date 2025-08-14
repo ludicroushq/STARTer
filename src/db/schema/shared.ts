@@ -1,11 +1,11 @@
-import { text, timestamp } from "drizzle-orm/pg-core";
-import { createId } from "@paralleldrive/cuid2";
+import { createId } from '@paralleldrive/cuid2';
+import { text, timestamp } from 'drizzle-orm/pg-core';
 
 export const shared = {
+  createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
   id: text()
     .primaryKey()
     .$defaultFn(() => createId()),
-  createdAt: timestamp({ withTimezone: true }).notNull().defaultNow(),
   updatedAt: timestamp({ withTimezone: true })
     .notNull()
     .defaultNow()

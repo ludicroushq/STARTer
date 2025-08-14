@@ -1,4 +1,4 @@
-import { getSession } from "./get-session";
+import { getSession } from './get-session';
 
 export const authRouter = {
   getSession,

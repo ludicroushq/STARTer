@@ -1,5 +1,5 @@
-import { createEnv } from "@t3-oss/env-core";
-import { z } from "zod";
+import { createEnv } from '@t3-oss/env-core';
+import { z } from 'zod';
 
 export const env = createEnv({
   emptyStringAsUndefined: true,
@@ -11,5 +11,5 @@ export const env = createEnv({
     GOOGLE_CLIENT_ID: z.string(),
     GOOGLE_CLIENT_SECRET: z.string(),
   },
-  skipValidation: process.env.NODE_ENV === "test",
+  skipValidation: process.env.NODE_ENV === 'test',
 });

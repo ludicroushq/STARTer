@@ -1,83 +1,83 @@
-import interTightWoff2 from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
-import interTightCss from "@fontsource-variable/inter-tight/wght.css?url";
-import interWoff2 from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
-import interCss from "@fontsource-variable/inter/wght.css?url";
-import type { QueryClient } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
+import interWoff2 from '@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url';
+import interCss from '@fontsource-variable/inter/wght.css?url';
+import interTightWoff2 from '@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url';
+import interTightCss from '@fontsource-variable/inter-tight/wght.css?url';
+import type { QueryClient } from '@tanstack/react-query';
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
 import {
+  createRootRouteWithContext,
   HeadContent,
   Outlet,
   Scripts,
-  createRootRouteWithContext,
-} from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
-import type { ReactNode } from "react";
-import { Toaster } from "react-hot-toast";
-import { Footer } from "./-components/footer";
-import { Navbar } from "./-components/navbar";
-import { NotFound } from "./-components/not-found";
-import appCss from "@/styles.css?url";
-import { orpc } from "@/server/client";
-import { config } from "@/config";
+} from '@tanstack/react-router';
+import { TanStackRouterDevtools } from '@tanstack/react-router-devtools';
+import type { ReactNode } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { config } from '@/config';
+import { orpc } from '@/server/client';
+import appCss from '@/styles.css?url';
+import { Footer } from './-components/footer';
+import { Navbar } from './-components/navbar';
+import { NotFound } from './-components/not-found';
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
 }>()({
   beforeLoad: async ({ context }) => {
     const session = await context.queryClient.fetchQuery(
-      orpc.auth.getSession.queryOptions(),
+      orpc.auth.getSession.queryOptions()
     );
     return { user: session?.user };
   },
   component: RootComponent,
-  loader: async ({ context }) => {
-    return {
-      user: context.user,
-    };
-  },
-  notFoundComponent: NotFound,
   head: () => ({
     links: [
       {
         href: appCss,
-        rel: "stylesheet",
+        rel: 'stylesheet',
       },
       {
         href: interCss,
-        rel: "stylesheet",
+        rel: 'stylesheet',
       },
       {
         href: interTightCss,
-        rel: "stylesheet",
+        rel: 'stylesheet',
       },
       {
-        as: "font",
-        crossOrigin: "anonymous",
+        as: 'font',
+        crossOrigin: 'anonymous',
         href: interWoff2,
-        rel: "preload",
-        type: "font/woff2",
+        rel: 'preload',
+        type: 'font/woff2',
       },
       {
-        as: "font",
-        crossOrigin: "anonymous",
+        as: 'font',
+        crossOrigin: 'anonymous',
         href: interTightWoff2,
-        rel: "preload",
-        type: "font/woff2",
+        rel: 'preload',
+        type: 'font/woff2',
       },
     ],
     meta: [
       {
-        charSet: "utf-8",
+        charSet: 'utf-8',
       },
       {
-        content: "width=device-width, initial-scale=1",
-        name: "viewport",
+        content: 'width=device-width, initial-scale=1',
+        name: 'viewport',
       },
       {
         title: config.name,
       },
     ],
   }),
+  loader: ({ context }) => {
+    return {
+      user: context.user,
+    };
+  },
+  notFoundComponent: NotFound,
 });
 
 function RootComponent() {
@@ -100,7 +100,8 @@ function RootComponent() {
 
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
-    <html lang="en" className="h-full">
+    <html className="h-full" lang="en">
+      {/** biome-ignore lint/style/noHeadElement: tanstack-start */}
       <head>
         <HeadContent />
       </head>

@@ -1,9 +1,9 @@
-import { twMerge } from "tailwind-merge";
-import { z } from "zod";
-import { fromError } from "zod-validation-error";
-import type { HTMLInputTypeAttribute } from "react";
-import { useFieldContext } from "../context";
-import { messageBuilder } from "@/lib/zod-validation-error/message-builder";
+import type { HTMLInputTypeAttribute } from 'react';
+import { twMerge } from 'tailwind-merge';
+import { z } from 'zod';
+import { fromError } from 'zod-validation-error';
+import { messageBuilder } from '@/lib/zod-validation-error/message-builder';
+import { useFieldContext } from '../context';
 
 type TextFieldProps = {
   label: string;
@@ -19,20 +19,21 @@ export function TextField(props: TextFieldProps) {
 
   return (
     <fieldset className="fieldset flex w-full min-w-0 flex-col">
+      {/** biome-ignore lint/a11y/noLabelWithoutControl: tanstack-form */}
       <label className="label">{label}</label>
 
       <input
-        type={type}
         className={twMerge(
-          "input w-full",
-          !field.state.meta.isValid && "input-error",
+          'input w-full',
+          !field.state.meta.isValid && 'input-error'
         )}
-        placeholder={placeholder}
-        value={field.state.value}
-        onBlur={field.handleBlur}
         disabled={disabled}
+        onBlur={field.handleBlur}
         onChange={(e) => field.handleChange(e.target.value)}
+        placeholder={placeholder}
         required={required}
+        type={type}
+        value={field.state.value}
       />
       <p className="text-error">
         {!field.state.meta.isValid &&
