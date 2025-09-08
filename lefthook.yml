@@ -1,4 +1,4 @@
 pre-commit:
   jobs:
-    - run: npx ultracite format --unsafe
+    - run: npx ultracite format
       stage_fixed: true
