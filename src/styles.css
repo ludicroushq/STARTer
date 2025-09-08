@@ -9,20 +9,7 @@
 }
 
 @utility container {
-  max-width: 64rem;
-  padding-inline: 1rem;
-  @variant sm {
-    padding-inline: 2rem;
-  }
-  @variant lg {
-    padding-inline: 4rem;
-  }
-  @variant xl {
-    padding-inline: 5rem;
-  }
-  @variant 2xl {
-    padding-inline: 6rem;
-  }
+  @apply max-w-5xl px-8;
 }
 
 @theme {
