@@ -1,16 +1,16 @@
-import 'dotenv/config';
-import { defineConfig } from 'drizzle-kit';
-import { env } from '@/env/server';
+import "dotenv/config";
+import { defineConfig } from "drizzle-kit";
+import { env } from "@/env/server";
 
 export default defineConfig({
-  casing: 'snake_case',
+  casing: "snake_case",
   dbCredentials: {
     url: env.DATABASE_URL,
   },
-  dialect: 'postgresql',
+  dialect: "postgresql",
   migrations: {
-    prefix: 'timestamp',
+    prefix: "timestamp",
   },
-  out: './src/db/migrations',
-  schema: './src/db/schema/index.ts',
+  out: "./src/db/migrations",
+  schema: "./src/db/schema/index.ts",
 });

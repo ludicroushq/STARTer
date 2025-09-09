@@ -1,4 +1,4 @@
-import { config } from '@/config';
+import { config } from "@/config";
 
 export function Footer() {
   const year = new Date().getFullYear();

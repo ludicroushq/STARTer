@@ -1,6 +1,6 @@
-import type { HTMLInputTypeAttribute } from 'react';
-import { twMerge } from 'tailwind-merge';
-import { useFieldContext } from '../context';
+import type { HTMLInputTypeAttribute } from "react";
+import { twMerge } from "tailwind-merge";
+import { useFieldContext } from "../context";
 
 type TextFieldProps = {
   label: string;
@@ -21,8 +21,8 @@ export function TextField(props: TextFieldProps) {
 
       <input
         className={twMerge(
-          'input w-full',
-          !field.state.meta.isValid && 'input-error'
+          "input w-full",
+          !field.state.meta.isValid && "input-error"
         )}
         disabled={disabled}
         onBlur={field.handleBlur}
@@ -33,7 +33,7 @@ export function TextField(props: TextFieldProps) {
         value={field.state.value}
       />
       <p className="text-error">
-        {!field.state.meta.isValid && field.state.meta.errors?.join(', ')}
+        {!field.state.meta.isValid && field.state.meta.errors?.join(", ")}
       </p>
     </fieldset>
   );

@@ -1,8 +1,8 @@
-import { SiGoogle, SiGoogleHex } from '@icons-pack/react-simple-icons';
-import { createFileRoute } from '@tanstack/react-router';
-import { authClient } from '@/auth-client';
+import { SiGoogle, SiGoogleHex } from "@icons-pack/react-simple-icons";
+import { createFileRoute } from "@tanstack/react-router";
+import { authClient } from "@/auth-client";
 
-export const Route = createFileRoute('/_unauthenticated/get-started/')({
+export const Route = createFileRoute("/_unauthenticated/get-started/")({
   component: RouteComponent,
 });
 
@@ -17,7 +17,7 @@ function RouteComponent() {
             className="btn border-[#e5e5e5] bg-white text-black"
             onClick={() => {
               authClient.signIn.social({
-                provider: 'google',
+                provider: "google",
               });
             }}
             type="button"

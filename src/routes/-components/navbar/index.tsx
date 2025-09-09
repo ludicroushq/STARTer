@@ -1,8 +1,8 @@
-import { Link } from '@tanstack/react-router';
-import type { User } from 'better-auth';
-import { ArrowRightIcon, MenuIcon, UserIcon } from 'lucide-react';
-import { useMemo } from 'react';
-import { config } from '@/config';
+import { Link } from "@tanstack/react-router";
+import type { User } from "better-auth";
+import { ArrowRightIcon, MenuIcon, UserIcon } from "lucide-react";
+import { useMemo } from "react";
+import { config } from "@/config";
 
 type NavbarProps = {
   user: User | undefined;
@@ -18,7 +18,7 @@ export function Navbar(props: NavbarProps) {
           <li>
             <Link
               activeProps={{
-                className: 'menu-active',
+                className: "menu-active",
               }}
               to="/app"
             >
@@ -56,7 +56,7 @@ export function Navbar(props: NavbarProps) {
               exact: true,
             }}
             activeProps={{
-              className: 'menu-active',
+              className: "menu-active",
             }}
             to="/"
           >
@@ -66,7 +66,7 @@ export function Navbar(props: NavbarProps) {
         <li>
           <Link
             activeProps={{
-              className: 'menu-active',
+              className: "menu-active",
             }}
             to="/get-started"
           >
@@ -83,7 +83,7 @@ export function Navbar(props: NavbarProps) {
       <div className="container mx-auto">
         <div className="navbar p-0">
           <div className="navbar-start gap-4">
-            <Link className="font-bold text-xl" to={user ? '/app' : '/'}>
+            <Link className="font-bold text-xl" to={user ? "/app" : "/"}>
               {config.name}
             </Link>
           </div>

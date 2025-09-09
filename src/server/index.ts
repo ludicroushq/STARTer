@@ -1,5 +1,5 @@
-import { ORPCError, os } from '@orpc/server';
-import type { createContext } from './context';
+import { ORPCError, os } from "@orpc/server";
+import type { createContext } from "./context";
 
 export const contextOs =
   os.$context<Awaited<ReturnType<typeof createContext>>>();
@@ -8,7 +8,7 @@ export const unauthenticatedOs = contextOs.use(({ context, next }) => {
   const { user, session } = context;
 
   if (user || session) {
-    throw new ORPCError('UNAUTHORIZED');
+    throw new ORPCError("UNAUTHORIZED");
   }
 
   return next({
@@ -24,7 +24,7 @@ export const authenticatedOs = contextOs.use(({ context, next }) => {
   const { user, session } = context;
 
   if (!(user && session)) {
-    throw new ORPCError('UNAUTHORIZED');
+    throw new ORPCError("UNAUTHORIZED");
   }
 
   return next({

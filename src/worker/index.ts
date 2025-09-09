@@ -1,15 +1,16 @@
-import { Sidequest } from 'sidequest';
-import { env } from '@/env/server';
+import { Sidequest } from "sidequest";
+import { env } from "@/env/server";
 
-export * as jobs from './jobs';
+// biome-ignore lint/performance/noBarrelFile: all jobs
+export * as jobs from "./jobs";
 
 export const config = {
   backend: {
     config: {
       connection: env.DATABASE_URL,
-      searchPath: ['sidequest'],
+      searchPath: ["sidequest"],
     },
-    driver: '@sidequest/postgres-backend',
+    driver: "@sidequest/postgres-backend",
   },
   dashboard: {
     enabled: false,

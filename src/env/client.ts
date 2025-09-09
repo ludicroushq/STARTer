@@ -1,9 +1,9 @@
-import { createEnv } from '@t3-oss/env-core';
+import { createEnv } from "@t3-oss/env-core";
 
 export const env = createEnv({
   client: {},
-  clientPrefix: 'VITE_',
+  clientPrefix: "VITE_",
   emptyStringAsUndefined: true,
   runtimeEnv: process.env,
-  skipValidation: process.env.NODE_ENV === 'test',
+  skipValidation: process.env.NODE_ENV === "test",
 });

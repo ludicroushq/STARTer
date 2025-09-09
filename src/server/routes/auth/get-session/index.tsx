@@ -1,4 +1,4 @@
-import { contextOs } from '@/server';
+import { contextOs } from "@/server";
 
 export const getSession = contextOs.handler(({ context }) => {
   const { user } = context;

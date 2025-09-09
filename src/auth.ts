@@ -1,9 +1,9 @@
-import { betterAuth } from 'better-auth';
-import { drizzleAdapter } from 'better-auth/adapters/drizzle';
-import { reactStartCookies } from 'better-auth/react-start';
-import ms from 'ms';
-import { db, schema } from './db';
-import { env } from './env/server';
+import { betterAuth } from "better-auth";
+import { drizzleAdapter } from "better-auth/adapters/drizzle";
+import { reactStartCookies } from "better-auth/react-start";
+import ms from "ms";
+import { db, schema } from "./db";
+import { env } from "./env/server";
 
 export const auth = betterAuth({
   advanced: {
@@ -12,7 +12,7 @@ export const auth = betterAuth({
     },
   },
   database: drizzleAdapter(db, {
-    provider: 'pg',
+    provider: "pg",
     schema,
     usePlural: true,
   }),
@@ -20,8 +20,10 @@ export const auth = betterAuth({
     reactStartCookies(), // make sure this is the last plugin in the array
   ],
   session: {
-    expiresIn: ms('180d') / 1000,
-    updateAge: ms('1d') / 1000,
+    // biome-ignore lint/style/noMagicNumbers: milliseconds to seconds
+    expiresIn: ms("180d") / 1000,
+    // biome-ignore lint/style/noMagicNumbers: milliseconds to seconds
+    updateAge: ms("1d") / 1000,
   },
   socialProviders: {
     google: {

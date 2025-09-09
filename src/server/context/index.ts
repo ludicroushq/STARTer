@@ -1,6 +1,6 @@
-import { getHeaders } from '@tanstack/react-start/server';
-import { cache } from 'react';
-import { auth } from '@/auth';
+import { getHeaders } from "@tanstack/react-start/server";
+import { cache } from "react";
+import { auth } from "@/auth";
 
 export const createContext = cache(async () => {
   const headers = getHeaders();
