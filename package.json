@@ -8,6 +8,7 @@
     "@orpc/server": "^1.7.7",
     "@orpc/tanstack-query": "^1.7.7",
     "@paralleldrive/cuid2": "^2.2.2",
+    "@sidequest/postgres-backend": "^1.7.0",
     "@t3-oss/env-core": "^0.13.8",
     "@tanstack/react-form": "^1.12.3",
     "@tanstack/react-query": "^5.84.0",
@@ -26,6 +27,7 @@
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-hot-toast": "^2.5.2",
+    "sidequest": "^1.7.0",
     "tailwind-merge": "^3.3.1",
     "vite": "^7.0.6"
   },
@@ -42,6 +44,7 @@
     "drizzle-kit": "^1.0.0-beta.1-c0277c0",
     "lefthook": "^1.12.3",
     "tailwindcss": "^4.1.10",
+    "tsx": "^4.20.5",
     "typescript": "^5.9.2",
     "ultracite": "5.1.2",
     "vite-tsconfig-paths": "^5.1.4",
@@ -113,6 +116,14 @@
     },
     "ultracite:lint": {
       "command": "ultracite lint"
+    },
+    "worker:dev": {
+      "command": "tsx --watch src/worker/start.ts",
+      "service": true
+    },
+    "worker:start": {
+      "command": "tsx src/worker/start.ts",
+      "service": true
     }
   }
 }
