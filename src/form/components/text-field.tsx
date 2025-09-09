@@ -1,8 +1,5 @@
 import type { HTMLInputTypeAttribute } from 'react';
 import { twMerge } from 'tailwind-merge';
-import { z } from 'zod';
-import { fromError } from 'zod-validation-error';
-import { messageBuilder } from '@/lib/zod-validation-error/message-builder';
 import { useFieldContext } from '../context';
 
 type TextFieldProps = {
@@ -36,10 +33,7 @@ export function TextField(props: TextFieldProps) {
         value={field.state.value}
       />
       <p className="text-error">
-        {!field.state.meta.isValid &&
-          fromError(new z.ZodError(field.state.meta.errors), {
-            messageBuilder,
-          }).toString()}
+        {!field.state.meta.isValid && field.state.meta.errors?.join(', ')}
       </p>
     </fieldset>
   );
