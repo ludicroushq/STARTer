@@ -50,6 +50,9 @@
     "vite-tsconfig-paths": "^5.1.4",
     "wireit": "^0.14.12"
   },
+  "engines": {
+    "node": "24"
+  },
   "name": "TODO",
   "packageManager": "pnpm@10.0.0",
   "private": true,
@@ -74,7 +77,7 @@
       ]
     },
     "prepare": {
-      "command": "git rev-parse --git-dir > /dev/null 2>&1 && lefthook install || true"
+      "command": "lefthook install"
     },
     "start": {
       "dependencies": [
