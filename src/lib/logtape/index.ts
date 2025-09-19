@@ -7,6 +7,11 @@ configureSync({
   filters: {},
   loggers: [
     {
+      category: ["logtape", "meta"],
+      lowestLevel: "warning",
+      sinks: ["console"],
+    },
+    {
       category: [],
       lowestLevel: isDevelopment ? "debug" : "info",
       sinks: ["console"],
