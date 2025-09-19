@@ -51,15 +51,19 @@
     "wireit": "^0.14.12"
   },
   "engines": {
-    "node": "24"
+    "node": ">=22"
   },
   "name": "TODO",
   "packageManager": "pnpm@10.0.0",
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "lefthook"
+    ]
+  },
   "private": true,
   "scripts": {
     "build": "wireit",
     "dev": "wireit",
-    "prepare": "wireit",
     "start": "wireit",
     "test": "wireit",
     "test:ci": "wireit"
@@ -75,9 +79,6 @@
       "dependencies": [
         "start:dev"
       ]
-    },
-    "prepare": {
-      "command": "lefthook install"
     },
     "start": {
       "dependencies": [
