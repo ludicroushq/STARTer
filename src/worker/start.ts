@@ -1,4 +1,12 @@
 import "dotenv/config";
-import { sidequest } from ".";
+import { logger } from "@/lib/logtape";
+import { bossman } from ".";
 
-await sidequest.start();
+async function run() {
+  await bossman.start();
+}
+
+run().catch((err) => {
+  logger.error(err);
+  process.exit(1);
+});

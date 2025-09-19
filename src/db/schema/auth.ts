@@ -3,15 +3,20 @@ import { shared } from "./shared";
 
 export const users = pgTable("users", {
   ...shared,
+  banExpires: timestamp({ withTimezone: true }),
+  banned: boolean().default(false),
+  banReason: text(),
   email: text().notNull().unique(),
   emailVerified: boolean().notNull(),
   image: text(),
   name: text().notNull(),
+  role: text(),
 });
 
 export const sessions = pgTable("sessions", {
   ...shared,
   expiresAt: timestamp({ withTimezone: true }).notNull(),
+  impersonatedBy: text(),
   ipAddress: text(),
   token: text().notNull().unique(),
   userAgent: text(),
