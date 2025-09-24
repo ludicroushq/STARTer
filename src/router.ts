@@ -7,7 +7,7 @@ import "@fontsource-variable/inter/wght.css";
 import "@fontsource-variable/inter-tight/wght.css";
 import "./styles.css";
 
-export function createRouter() {
+export function getRouter() {
   const queryClient = new QueryClient();
 
   const router = routerWithQueryClient(
@@ -32,11 +32,4 @@ export function createRouter() {
   });
 
   return router;
-}
-
-declare module "@tanstack/react-router" {
-  // biome-ignore lint/nursery/useConsistentTypeDefinitions: declaration merging
-  interface Register {
-    router: ReturnType<typeof createRouter>;
-  }
 }

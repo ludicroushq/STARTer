@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: react components */
 import { createFormHook } from "@tanstack/react-form";
 import { ErrorAlert } from "./components/error-alert";
 import { SubmitButton } from "./components/submit-button";

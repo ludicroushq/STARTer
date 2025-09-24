@@ -1,6 +1,6 @@
 /** biome-ignore-all lint/style/useFilenamingConvention: tanstack-start */
-
-import { createServerFileRoute } from "@tanstack/react-start/server";
+/** biome-ignore-all lint/style/useNamingConvention: tanstack-start */
+import { createFileRoute } from "@tanstack/react-router";
 import { createDashboard } from "pg-bossman";
 import { auth } from "@/auth";
 import { bossmanClient } from "@/worker/client";
@@ -31,12 +31,16 @@ async function handle({ request }: { request: Request }) {
   return dashboard(request);
 }
 
-export const ServerRoute = createServerFileRoute("/admin/worker/$").methods({
-  DELETE: handle,
-  GET: handle,
-  HEAD: handle,
-  OPTIONS: handle,
-  PATCH: handle,
-  POST: handle,
-  PUT: handle,
+export const Route = createFileRoute("/admin/worker/$")({
+  server: {
+    handlers: {
+      DELETE: handle,
+      GET: handle,
+      HEAD: handle,
+      OPTIONS: handle,
+      PATCH: handle,
+      POST: handle,
+      PUT: handle,
+    },
+  },
 });

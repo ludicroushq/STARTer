@@ -9,7 +9,7 @@ import { logger } from "@/lib/logtape";
 import { createContext } from "@/server/context";
 import { router } from "@/server/routes";
 
-const getORPCClient = createIsomorphicFn()
+const getOrpcClient = createIsomorphicFn()
   .server(() =>
     createRouterClient(router, {
       /**
@@ -45,6 +45,6 @@ const getORPCClient = createIsomorphicFn()
     return createORPCClient(link);
   });
 
-export const client: RouterClient<typeof router> = getORPCClient();
+export const client: RouterClient<typeof router> = getOrpcClient();
 
 export const orpc = createTanstackQueryUtils(client);

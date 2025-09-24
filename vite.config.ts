@@ -1,3 +1,4 @@
+import "dotenv/config";
 import tailwindcss from "@tailwindcss/vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";
@@ -9,10 +10,7 @@ export default defineConfig({
     tsconfigPaths(),
     tailwindcss(),
     tanstackStart({
-      customViteReactPlugin: true,
-      tsr: {
-        srcDirectory: "./src",
-      },
+      srcDirectory: "./src",
     }),
     viteReact(),
   ],

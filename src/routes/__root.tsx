@@ -1,3 +1,4 @@
+/// <reference types="vite/client" />
 import interWoff2 from "@fontsource-variable/inter/files/inter-latin-wght-normal.woff2?url";
 import interCss from "@fontsource-variable/inter/wght.css?url";
 import interTightWoff2 from "@fontsource-variable/inter-tight/files/inter-tight-latin-wght-normal.woff2?url";
@@ -72,11 +73,9 @@ export const Route = createRootRouteWithContext<{
       },
     ],
   }),
-  loader: ({ context }) => {
-    return {
-      user: context.user,
-    };
-  },
+  loader: ({ context }) => ({
+    user: context.user,
+  }),
   notFoundComponent: NotFound,
 });
 

@@ -1,3 +1,4 @@
+/** biome-ignore-all lint/style/useNamingConvention: environment variables */
 import { createEnv } from "@t3-oss/env-core";
 import { type } from "arktype";
 

@@ -8,8 +8,6 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-import { createServerRootRoute } from '@tanstack/react-start/server'
-
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as UnauthenticatedRouteImport } from './routes/_unauthenticated'
 import { Route as AuthenticatedRouteImport } from './routes/_authenticated'
@@ -17,11 +15,9 @@ import { Route as UnauthenticatedIndexRouteImport } from './routes/_unauthentica
 import { Route as UnauthenticatedGetStartedIndexRouteImport } from './routes/_unauthenticated/get-started/index'
 import { Route as AuthenticatedSignOutIndexRouteImport } from './routes/_authenticated/sign-out/index'
 import { Route as AuthenticatedAppIndexRouteImport } from './routes/_authenticated/app/index'
-import { ServerRoute as ApiRpcSplatServerRouteImport } from './routes/api/rpc/$'
-import { ServerRoute as ApiAuthSplatServerRouteImport } from './routes/api/auth/$'
-import { ServerRoute as AdminWorkerSplatServerRouteImport } from './routes/admin/worker/$'
-
-const rootServerRouteImport = createServerRootRoute()
+import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc/$'
+import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as AdminWorkerSplatRouteImport } from './routes/admin/worker/$'
 
 const UnauthenticatedRoute = UnauthenticatedRouteImport.update({
   id: '/_unauthenticated',
@@ -53,30 +49,36 @@ const AuthenticatedAppIndexRoute = AuthenticatedAppIndexRouteImport.update({
   path: '/app/',
   getParentRoute: () => AuthenticatedRoute,
 } as any)
-const ApiRpcSplatServerRoute = ApiRpcSplatServerRouteImport.update({
+const ApiRpcSplatRoute = ApiRpcSplatRouteImport.update({
   id: '/api/rpc/$',
   path: '/api/rpc/$',
-  getParentRoute: () => rootServerRouteImport,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const ApiAuthSplatServerRoute = ApiAuthSplatServerRouteImport.update({
+const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   id: '/api/auth/$',
   path: '/api/auth/$',
-  getParentRoute: () => rootServerRouteImport,
+  getParentRoute: () => rootRouteImport,
 } as any)
-const AdminWorkerSplatServerRoute = AdminWorkerSplatServerRouteImport.update({
+const AdminWorkerSplatRoute = AdminWorkerSplatRouteImport.update({
   id: '/admin/worker/$',
   path: '/admin/worker/$',
-  getParentRoute: () => rootServerRouteImport,
+  getParentRoute: () => rootRouteImport,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof UnauthenticatedIndexRoute
+  '/admin/worker/$': typeof AdminWorkerSplatRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app': typeof AuthenticatedAppIndexRoute
   '/sign-out': typeof AuthenticatedSignOutIndexRoute
   '/get-started': typeof UnauthenticatedGetStartedIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof UnauthenticatedIndexRoute
+  '/admin/worker/$': typeof AdminWorkerSplatRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app': typeof AuthenticatedAppIndexRoute
   '/sign-out': typeof AuthenticatedSignOutIndexRoute
   '/get-started': typeof UnauthenticatedGetStartedIndexRoute
@@ -86,20 +88,40 @@ export interface FileRoutesById {
   '/_authenticated': typeof AuthenticatedRouteWithChildren
   '/_unauthenticated': typeof UnauthenticatedRouteWithChildren
   '/_unauthenticated/': typeof UnauthenticatedIndexRoute
+  '/admin/worker/$': typeof AdminWorkerSplatRoute
+  '/api/auth/$': typeof ApiAuthSplatRoute
+  '/api/rpc/$': typeof ApiRpcSplatRoute
   '/_authenticated/app/': typeof AuthenticatedAppIndexRoute
   '/_authenticated/sign-out/': typeof AuthenticatedSignOutIndexRoute
   '/_unauthenticated/get-started/': typeof UnauthenticatedGetStartedIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/app' | '/sign-out' | '/get-started'
+  fullPaths:
+    | '/'
+    | '/admin/worker/$'
+    | '/api/auth/$'
+    | '/api/rpc/$'
+    | '/app'
+    | '/sign-out'
+    | '/get-started'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/app' | '/sign-out' | '/get-started'
+  to:
+    | '/'
+    | '/admin/worker/$'
+    | '/api/auth/$'
+    | '/api/rpc/$'
+    | '/app'
+    | '/sign-out'
+    | '/get-started'
   id:
     | '__root__'
     | '/_authenticated'
     | '/_unauthenticated'
     | '/_unauthenticated/'
+    | '/admin/worker/$'
+    | '/api/auth/$'
+    | '/api/rpc/$'
     | '/_authenticated/app/'
     | '/_authenticated/sign-out/'
     | '/_unauthenticated/get-started/'
@@ -108,35 +130,9 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   AuthenticatedRoute: typeof AuthenticatedRouteWithChildren
   UnauthenticatedRoute: typeof UnauthenticatedRouteWithChildren
-}
-export interface FileServerRoutesByFullPath {
-  '/admin/worker/$': typeof AdminWorkerSplatServerRoute
-  '/api/auth/$': typeof ApiAuthSplatServerRoute
-  '/api/rpc/$': typeof ApiRpcSplatServerRoute
-}
-export interface FileServerRoutesByTo {
-  '/admin/worker/$': typeof AdminWorkerSplatServerRoute
-  '/api/auth/$': typeof ApiAuthSplatServerRoute
-  '/api/rpc/$': typeof ApiRpcSplatServerRoute
-}
-export interface FileServerRoutesById {
-  __root__: typeof rootServerRouteImport
-  '/admin/worker/$': typeof AdminWorkerSplatServerRoute
-  '/api/auth/$': typeof ApiAuthSplatServerRoute
-  '/api/rpc/$': typeof ApiRpcSplatServerRoute
-}
-export interface FileServerRouteTypes {
-  fileServerRoutesByFullPath: FileServerRoutesByFullPath
-  fullPaths: '/admin/worker/$' | '/api/auth/$' | '/api/rpc/$'
-  fileServerRoutesByTo: FileServerRoutesByTo
-  to: '/admin/worker/$' | '/api/auth/$' | '/api/rpc/$'
-  id: '__root__' | '/admin/worker/$' | '/api/auth/$' | '/api/rpc/$'
-  fileServerRoutesById: FileServerRoutesById
-}
-export interface RootServerRouteChildren {
-  AdminWorkerSplatServerRoute: typeof AdminWorkerSplatServerRoute
-  ApiAuthSplatServerRoute: typeof ApiAuthSplatServerRoute
-  ApiRpcSplatServerRoute: typeof ApiRpcSplatServerRoute
+  AdminWorkerSplatRoute: typeof AdminWorkerSplatRoute
+  ApiAuthSplatRoute: typeof ApiAuthSplatRoute
+  ApiRpcSplatRoute: typeof ApiRpcSplatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -183,30 +179,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedAppIndexRouteImport
       parentRoute: typeof AuthenticatedRoute
     }
-  }
-}
-declare module '@tanstack/react-start/server' {
-  interface ServerFileRoutesByPath {
     '/api/rpc/$': {
       id: '/api/rpc/$'
       path: '/api/rpc/$'
       fullPath: '/api/rpc/$'
-      preLoaderRoute: typeof ApiRpcSplatServerRouteImport
-      parentRoute: typeof rootServerRouteImport
+      preLoaderRoute: typeof ApiRpcSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/api/auth/$': {
       id: '/api/auth/$'
       path: '/api/auth/$'
       fullPath: '/api/auth/$'
-      preLoaderRoute: typeof ApiAuthSplatServerRouteImport
-      parentRoute: typeof rootServerRouteImport
+      preLoaderRoute: typeof ApiAuthSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
     '/admin/worker/$': {
       id: '/admin/worker/$'
       path: '/admin/worker/$'
       fullPath: '/admin/worker/$'
-      preLoaderRoute: typeof AdminWorkerSplatServerRouteImport
-      parentRoute: typeof rootServerRouteImport
+      preLoaderRoute: typeof AdminWorkerSplatRouteImport
+      parentRoute: typeof rootRouteImport
     }
   }
 }
@@ -242,15 +234,18 @@ const UnauthenticatedRouteWithChildren = UnauthenticatedRoute._addFileChildren(
 const rootRouteChildren: RootRouteChildren = {
   AuthenticatedRoute: AuthenticatedRouteWithChildren,
   UnauthenticatedRoute: UnauthenticatedRouteWithChildren,
+  AdminWorkerSplatRoute: AdminWorkerSplatRoute,
+  ApiAuthSplatRoute: ApiAuthSplatRoute,
+  ApiRpcSplatRoute: ApiRpcSplatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-const rootServerRouteChildren: RootServerRouteChildren = {
-  AdminWorkerSplatServerRoute: AdminWorkerSplatServerRoute,
-  ApiAuthSplatServerRoute: ApiAuthSplatServerRoute,
-  ApiRpcSplatServerRoute: ApiRpcSplatServerRoute,
+
+import type { getRouter } from './router.ts'
+import type { createStart } from '@tanstack/react-start'
+declare module '@tanstack/react-start' {
+  interface Register {
+    router: Awaited<ReturnType<typeof getRouter>>
+  }
 }
-export const serverRouteTree = rootServerRouteImport
-  ._addFileChildren(rootServerRouteChildren)
-  ._addFileTypes<FileServerRouteTypes>()
