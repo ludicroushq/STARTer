@@ -6,6 +6,7 @@ import { routeTree } from "./routeTree.gen";
 import "@fontsource-variable/inter/wght.css";
 import "@fontsource-variable/inter-tight/wght.css";
 import "./styles.css";
+import { NotFound } from "./routes/-components/not-found";
 
 export function getRouter() {
   const queryClient = new QueryClient();
@@ -13,6 +14,7 @@ export function getRouter() {
   const router = routerWithQueryClient(
     createTanStackRouter({
       context: { queryClient },
+      defaultNotFoundComponent: NotFound,
       defaultPreload: "intent",
       defaultPreloadStaleTime: 0,
       routeTree,

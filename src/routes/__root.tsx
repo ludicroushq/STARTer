@@ -19,7 +19,6 @@ import { orpc } from "@/server/client";
 import appCss from "@/styles.css?url";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
-import { NotFound } from "./-components/not-found";
 
 export const Route = createRootRouteWithContext<{
   queryClient: QueryClient;
@@ -76,7 +75,6 @@ export const Route = createRootRouteWithContext<{
   loader: ({ context }) => ({
     user: context.user,
   }),
-  notFoundComponent: NotFound,
 });
 
 function RootComponent() {
