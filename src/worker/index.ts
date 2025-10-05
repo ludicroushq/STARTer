@@ -1,5 +1,5 @@
 import { createBossman, defineEvents } from "pg-bossman";
-import { env } from "@/env/server";
+import { env } from "@/config/env/server";
 
 export const bossman = createBossman({
   connectionString: env.DATABASE_URL,

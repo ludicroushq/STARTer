@@ -4,8 +4,8 @@ import { admin } from "better-auth/plugins";
 import { reactStartCookies } from "better-auth/react-start";
 import ms from "ms";
 import { ac, roles } from "./auth-permissions";
+import { env } from "./config/env/server";
 import { db, schema } from "./db";
-import { env } from "./env/server";
 
 export const auth = betterAuth({
   advanced: {

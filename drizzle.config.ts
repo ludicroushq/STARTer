@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { defineConfig } from "drizzle-kit";
-import { env } from "@/env/server";
+import { env } from "@/config/env/server";
 
 export default defineConfig({
   casing: "snake_case",

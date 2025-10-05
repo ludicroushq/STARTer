@@ -1,8 +1,8 @@
 import { drizzle } from "drizzle-orm/node-postgres";
+import { env } from "@/config/env/server";
 import { relations } from "@/db/relations";
 // biome-ignore lint/performance/noNamespaceImport: drizzle
 import * as schema from "@/db/schema";
-import { env } from "@/env/server";
 
 // biome-ignore lint/performance/noBarrelFile: schema
 export * as schema from "@/db/schema";
