@@ -9,7 +9,7 @@
 }
 
 @utility container {
-  @apply max-w-5xl px-8;
+  @apply px-8;
 }
 
 @theme {
