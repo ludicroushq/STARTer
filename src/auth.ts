@@ -32,9 +32,12 @@ export const auth = betterAuth({
     updateAge: ms("1d") / 1000,
   },
   socialProviders: {
-    google: {
-      clientId: env.GOOGLE_CLIENT_ID,
-      clientSecret: env.GOOGLE_CLIENT_SECRET,
-    },
+    ...(env.GOOGLE_CLIENT_ID &&
+      env.GOOGLE_CLIENT_SECRET && {
+        google: {
+          clientId: env.GOOGLE_CLIENT_ID,
+          clientSecret: env.GOOGLE_CLIENT_SECRET,
+        },
+      }),
   },
 });

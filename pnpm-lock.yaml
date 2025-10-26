@@ -56,6 +56,9 @@ importers:
       '@tanstack/react-start':
         specifier: ^1.132.37
         version: 1.132.37(crossws@0.4.1(srvx@0.8.9))(react-dom@19.2.0(react@19.2.0))(react@19.2.0)(vite@7.1.9(@types/node@24.1.0)(jiti@2.6.1)(lightningcss@1.30.1)(terser@5.44.0)(tsx@4.20.6)(yaml@2.8.0))
+      arkenv:
+        specifier: ^0.7.3
+        version: 0.7.3(arktype@2.1.22)
       arktype:
         specifier: ^2.1.22
         version: 2.1.22
@@ -1350,6 +1353,11 @@ packages:
 
   argparse@1.0.10:
     resolution: {integrity: sha512-o5Roy6tNG4SL/FOkCAN6RzjiakZS25RLYFrcMttJqbdd8BWrnA+fGz57iN5Pb06pvBGvl5gQ0B48dJlslXvoTg==}
+
+  arkenv@0.7.3:
+    resolution: {integrity: sha512-NOhYihh4ln5utmUi6NdsMh7wdsbJ82i19LmQqQeF+DAPaCeGq2YoMXHEpBN6gS6ibC7kecTEzh5oww5A60yGwg==}
+    peerDependencies:
+      arktype: ^2.1.22
 
   arktype@2.1.22:
     resolution: {integrity: sha512-xdzl6WcAhrdahvRRnXaNwsipCgHuNoLobRqhiP8RjnfL9Gp947abGlo68GAIyLtxbD+MLzNyH2YR4kEqioMmYQ==}
@@ -3955,6 +3963,10 @@ snapshots:
   argparse@1.0.10:
     dependencies:
       sprintf-js: 1.0.3
+
+  arkenv@0.7.3(arktype@2.1.22):
+    dependencies:
+      arktype: 2.1.22
 
   arktype@2.1.22:
     dependencies:

@@ -1,9 +1,5 @@
-import { createEnv } from "@t3-oss/env-core";
+import arkenv from "arkenv";
 
-export const env = createEnv({
-  client: {},
-  clientPrefix: "VITE_",
-  emptyStringAsUndefined: true,
-  runtimeEnv: process.env,
-  skipValidation: process.env.NODE_ENV === "test",
+export const env = arkenv({
+  // VITE_CLIENT_...
 });
