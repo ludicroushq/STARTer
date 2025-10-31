@@ -98,7 +98,6 @@ function RootComponent() {
 function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html className="h-full" lang="en">
-      {/** biome-ignore lint/style/noHeadElement: tanstack-start */}
       <head>
         <HeadContent />
       </head>

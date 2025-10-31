@@ -35,7 +35,7 @@ const getOrpcClient = createIsomorphicFn()
             return;
           }
 
-          logger.error`${error}`;
+          logger.error(`${error}`);
           toast.error("An unexpected error occurred.");
         }),
       ],

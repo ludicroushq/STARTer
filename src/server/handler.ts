@@ -6,7 +6,7 @@ import { router } from "@/server/routes";
 export const handler = new RPCHandler(router, {
   interceptors: [
     onError((err) => {
-      logger.error`${err}`;
+      logger.error(`${err}`);
     }),
   ],
 });
