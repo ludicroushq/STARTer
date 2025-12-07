@@ -1,12 +1,21 @@
 {
-  "name": "todo",
+  "name": "TODO",
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "vite dev --port 3000",
-    "build": "vite build",
-    "serve": "vite preview",
-    "test": "vitest run"
+    "build": "run-p *:build",
+    "ci:test:typecheck": "bun run --bun tsc --noEmit",
+    "ci:test:vitest": "bun run vitest run --coverage --passWithNoTests",
+    "ci:test": "run-p ci:test:*",
+    "dev": "run-p *:dev",
+    "start": "run-p *:start",
+    "test:typecheck": "bun run --bun tsc --noEmit",
+    "test:vitest": "bun run vitest run --coverage --passWithNoTests",
+    "test": "run-p test:*",
+    "vite:build": "vite build",
+    "vite:dev": "vite dev --port 3000",
+    "vite:serve": "vite preview",
+    "vite:start": "node .output/server/index.mjs"
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
@@ -20,6 +29,7 @@
     "@tanstack/router-plugin": "^1.132.0",
     "lucide-react": "^0.544.0",
     "nitro": "latest",
+    "npm-run-all": "^4.1.5",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
     "tailwindcss": "^4.0.6",
@@ -33,6 +43,7 @@
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
     "@vitejs/plugin-react": "^5.0.4",
+    "@vitest/coverage-v8": "^4.0.15",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^27.0.0",
     "typescript": "^5.7.2",
