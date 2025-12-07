@@ -1,22 +1,4 @@
 {
-  "name": "TODO",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "build": "run-p *:build",
-    "ci:test:typecheck": "bun run --bun tsc --noEmit",
-    "ci:test:vitest": "bun run vitest run --coverage --passWithNoTests",
-    "ci:test": "run-p ci:test:*",
-    "dev": "run-p *:dev",
-    "start": "run-p *:start",
-    "test:typecheck": "bun run --bun tsc --noEmit",
-    "test:vitest": "bun run vitest run --coverage --passWithNoTests",
-    "test": "run-p test:*",
-    "vite:build": "vite build",
-    "vite:dev": "vite dev --port 3000",
-    "vite:serve": "vite preview",
-    "vite:start": "node .output/server/index.mjs"
-  },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
     "@tanstack/react-devtools": "^0.7.0",
@@ -36,6 +18,7 @@
     "vite-tsconfig-paths": "^5.1.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "2.3.8",
     "@tanstack/devtools-vite": "^0.3.11",
     "@testing-library/dom": "^10.4.0",
     "@testing-library/react": "^16.2.0",
@@ -46,9 +29,31 @@
     "@vitest/coverage-v8": "^4.0.15",
     "babel-plugin-react-compiler": "^1.0.0",
     "jsdom": "^27.0.0",
+    "lefthook": "^2.0.8",
     "typescript": "^5.7.2",
+    "ultracite": "6.3.9",
     "vite": "^7.1.7",
     "vitest": "^3.0.5",
     "web-vitals": "^5.1.0"
-  }
+  },
+  "name": "TODO",
+  "private": true,
+  "scripts": {
+    "build": "run-p *:build",
+    "ci:test": "run-p ci:test:*",
+    "ci:test:typecheck": "bun run --bun tsc --noEmit",
+    "ci:test:ultracite": "bun run --bun ultracite check",
+    "ci:test:vitest": "bun run vitest run --coverage --passWithNoTests",
+    "dev": "run-p *:dev",
+    "start": "run-p *:start",
+    "test": "run-p test:*",
+    "test:typecheck": "bun run --bun tsc --noEmit",
+    "test:ultracite": "bun run --bun ultracite fix",
+    "test:vitest": "bun run vitest run --coverage --passWithNoTests",
+    "vite:build": "vite build",
+    "vite:dev": "vite dev --port 3000",
+    "vite:serve": "vite preview",
+    "vite:start": "node .output/server/index.mjs"
+  },
+  "type": "module"
 }
