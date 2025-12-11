@@ -10,6 +10,7 @@ import { orpcTanstackQueryClient } from "@/server/client";
 import appCss from "../styles.css?url";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
+import { NotFound } from "./-components/not-found";
 import TanStackQueryDevtools from "./-components/tanstack-query/devtools";
 
 type MyRouterContext = {
@@ -46,6 +47,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
   loader: ({ context }) => ({
     user: context.user,
   }),
+  notFoundComponent: NotFound,
   shellComponent: RootDocument,
 });
 
