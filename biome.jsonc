@@ -10,7 +10,13 @@
   "extends": ["ultracite/core", "ultracite/react", "ultracite/remix"],
   "files": {
     "ignoreUnknown": true,
-    "includes": ["**/*", "bun.lock", "!src/routeTree.gen.ts"]
+    "includes": [
+      "**/*",
+      "bun.lock",
+      "!src/routes/-shadcn/**/*",
+      "!src/db/schema/__generated__/auth-schema.ts",
+      "!src/routeTree.gen.ts"
+    ]
   },
   "json": {
     "assist": {

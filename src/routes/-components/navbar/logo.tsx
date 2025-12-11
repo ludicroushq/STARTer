@@ -1,0 +1,15 @@
+import { Link } from "@tanstack/react-router";
+import type { User } from "better-auth";
+
+type LogoProps = {
+  user: User | undefined;
+};
+export function Logo(props: LogoProps) {
+  const { user } = props;
+
+  return (
+    <Link className="font-bold text-xl" to={user ? "/app" : "/"}>
+      TODO
+    </Link>
+  );
+}
