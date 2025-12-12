@@ -15,6 +15,14 @@ const config = defineConfig({
     }),
     tailwindcss(),
     tanstackStart(),
+    nitro({
+      preset: "bun",
+      vercel: {
+        functions: {
+          runtime: "bun1.x",
+        },
+      },
+    }),
     viteReact({
       babel: {
         plugins: ["babel-plugin-react-compiler"],

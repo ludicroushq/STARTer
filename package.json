@@ -65,10 +65,10 @@
     "test": "run-p test:*",
     "test:typecheck": "bun run --bun tsc --noEmit",
     "test:ultracite": "bun run --bun ultracite fix",
-    "vite:build": "vite build",
-    "vite:dev": "vite dev --port 3000",
-    "vite:serve": "vite preview",
-    "vite:start": "node .output/server/index.mjs"
+    "vite:build": "bun run --bun vite build",
+    "vite:dev": "bun run --bun vite dev --port 3000",
+    "vite:serve": "bun run --bun vite preview",
+    "vite:start": "bun run .output/server/index.mjs"
   },
   "type": "module"
 }
