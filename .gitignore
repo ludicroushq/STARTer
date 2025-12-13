@@ -5,6 +5,7 @@
 .tanstack
 .vinxi
 .wrangler
+*.db
 *.local
 count.txt
 coverage

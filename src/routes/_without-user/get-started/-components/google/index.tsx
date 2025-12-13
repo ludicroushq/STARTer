@@ -7,7 +7,7 @@ export function Google() {
     <Button
       className="w-full"
       onClick={() => {
-        authClient.signIn.social({
+        authClient().signIn.social({
           callbackURL: "/app",
           provider: "google",
         });

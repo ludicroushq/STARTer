@@ -6,7 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
-import { orpcTanstackQueryClient } from "@/server/client";
+import { authClient } from "@/lib/auth-client";
 import appCss from "../styles.css?url";
 import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
@@ -18,11 +18,13 @@ type MyRouterContext = {
 };
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
-  beforeLoad: async ({ context }) => {
-    const session = await context.queryClient.fetchQuery(
-      orpcTanstackQueryClient.auth.getSession.queryOptions()
-    );
-    return { user: session?.user };
+  beforeLoad: async () => {
+    const sessionResponse = await authClient().getSession();
+    if (!sessionResponse.data) {
+      return {};
+    }
+    const { session, user } = sessionResponse.data;
+    return { session, user };
   },
   head: () => ({
     links: [
@@ -40,7 +42,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         name: "viewport",
       },
       {
-        title: "TanStack Start Starter",
+        title: "TODO",
       },
     ],
   }),
