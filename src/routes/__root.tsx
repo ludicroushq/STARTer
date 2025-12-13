@@ -6,6 +6,7 @@ import {
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { appName } from "@/config/app";
 import { authClient } from "@/lib/auth-client";
 import appCss from "../styles.css?url";
 import { Footer } from "./-components/footer";
@@ -42,7 +43,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
         name: "viewport",
       },
       {
-        title: "TODO",
+        title: appName,
       },
     ],
   }),

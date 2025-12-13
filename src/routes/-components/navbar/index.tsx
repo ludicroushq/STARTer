@@ -1,5 +1,6 @@
 import type { User } from "better-auth";
 import { Menu } from "lucide-react";
+import { appName } from "@/config/app";
 import {
   Accordion,
   AccordionContent,
@@ -89,9 +90,7 @@ export function Navbar(props: NavbarProps) {
             </SheetTrigger>
             <SheetContent className="overflow-y-auto">
               <SheetHeader>
-                <SheetTitle>
-                  <Logo user={user} />
-                </SheetTitle>
+                <SheetTitle>{appName}</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-6 p-4">
                 <Accordion
