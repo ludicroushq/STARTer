@@ -3,7 +3,7 @@ import type { User } from "better-auth";
 import { appName } from "@/config/app";
 
 type LogoProps = {
-  user: User | undefined;
+  user: User | null;
 };
 export function Logo(props: LogoProps) {
   const { user } = props;

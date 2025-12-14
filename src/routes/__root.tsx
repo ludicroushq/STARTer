@@ -13,6 +13,7 @@ import { Footer } from "./-components/footer";
 import { Navbar } from "./-components/navbar";
 import { NotFound } from "./-components/not-found";
 import TanStackQueryDevtools from "./-components/tanstack-query/devtools";
+import { Toaster } from "./-shadcn/components/ui/sonner";
 
 type MyRouterContext = {
   queryClient: QueryClient;
@@ -21,9 +22,20 @@ type MyRouterContext = {
 export const Route = createRootRouteWithContext<MyRouterContext>()({
   beforeLoad: async () => {
     const sessionResponse = await authClient().getSession();
-    if (!sessionResponse.data) {
-      return {};
+    if (sessionResponse.error) {
+      return {
+        session: null,
+        user: null,
+      };
     }
+
+    if (!sessionResponse.data) {
+      return {
+        session: null,
+        user: null,
+      };
+    }
+
     const { session, user } = sessionResponse.data;
     return { session, user };
   },
@@ -67,6 +79,7 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <main className="grow">{children}</main>
         <Footer />
 
+        <Toaster />
         <TanStackDevtools
           config={{
             position: "bottom-right",

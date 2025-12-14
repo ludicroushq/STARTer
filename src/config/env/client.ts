@@ -5,5 +5,6 @@ export const clientEnv = createEnv({
     // VITE_...
   },
   clientPrefix: "VITE_",
+  emptyStringAsUndefined: true,
   runtimeEnv: process.env,
 });

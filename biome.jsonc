@@ -12,7 +12,7 @@
     "ignoreUnknown": true,
     "includes": [
       "**/*",
-      "bun.lock",
+      "!bun.lock",
       "!src/routes/-shadcn/**/*",
       "!src/db/schema/__generated__/auth-schema.ts",
       "!src/routeTree.gen.ts"

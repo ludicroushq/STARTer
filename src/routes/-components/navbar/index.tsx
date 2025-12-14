@@ -1,3 +1,4 @@
+import { Link } from "@tanstack/react-router";
 import type { User } from "better-auth";
 import { Menu } from "lucide-react";
 import { appName } from "@/config/app";
@@ -34,7 +35,7 @@ type MenuItem = {
 };
 
 type NavbarProps = {
-  user: User | undefined;
+  user: User | null;
 };
 
 export function Navbar(props: NavbarProps) {
@@ -63,7 +64,7 @@ export function Navbar(props: NavbarProps) {
       ];
 
   return (
-    <section className="container mx-auto border-b py-4">
+    <div className="container mx-auto border-b py-4">
       {/* Desktop Menu */}
       <nav className="hidden items-center justify-between lg:flex">
         <div className="flex items-center gap-6">
@@ -105,7 +106,7 @@ export function Navbar(props: NavbarProps) {
           </Sheet>
         </div>
       </div>
-    </section>
+    </div>
   );
 }
 
@@ -128,10 +129,10 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
+        asChild
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 font-medium text-sm transition-colors hover:bg-muted hover:text-accent-foreground"
-        href={item.url}
       >
-        {item.title}
+        <Link to={item.url}>{item.title}</Link>
       </NavigationMenuLink>
     </NavigationMenuItem>
   );
@@ -154,16 +155,16 @@ const renderMobileMenuItem = (item: MenuItem) => {
   }
 
   return (
-    <a className="font-semibold text-md" href={item.url} key={item.title}>
+    <Link className="font-semibold text-md" key={item.title} to={item.url}>
       {item.title}
-    </a>
+    </Link>
   );
 };
 
 const SubMenuLink = ({ item }: { item: MenuItem }) => (
-  <a
+  <Link
     className="flex min-w-80 select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-accent-foreground"
-    href={item.url}
+    to={item.url}
   >
     <div className="text-foreground">{item.icon}</div>
     <div>
@@ -174,5 +175,5 @@ const SubMenuLink = ({ item }: { item: MenuItem }) => (
         </p>
       ) : null}
     </div>
-  </a>
+  </Link>
 );

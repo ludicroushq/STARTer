@@ -4,7 +4,7 @@ export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <section className="container mx-auto border-t py-8">
+    <div className="container mx-auto border-t py-8">
       <footer>
         <div className="font-medium text-muted-foreground text-sm">
           <p>
@@ -12,6 +12,6 @@ export function Footer() {
           </p>
         </div>
       </footer>
-    </section>
+    </div>
   );
 }
