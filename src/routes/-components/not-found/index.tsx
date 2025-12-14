@@ -8,10 +8,8 @@ export function NotFound() {
     <div className="container mx-auto flex h-full flex-col items-center justify-center space-y-4">
       <H1>Not Found</H1>
       <Lead>Could not find requested resource</Lead>
-      <Button asChild>
-        <Link to="/">
-          Return Home <ArrowRightIcon />
-        </Link>
+      <Button render={<Link to="/" />}>
+        Return Home <ArrowRightIcon />
       </Button>
     </div>
   );

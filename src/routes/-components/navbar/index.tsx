@@ -84,21 +84,15 @@ export function Navbar(props: NavbarProps) {
         <div className="flex items-center justify-between">
           <Logo user={user} />
           <Sheet>
-            <SheetTrigger asChild>
-              <Button size="icon" variant="outline">
-                <Menu className="size-4" />
-              </Button>
+            <SheetTrigger render={<Button size="icon" variant="outline" />}>
+              <Menu className="size-4" />
             </SheetTrigger>
             <SheetContent className="overflow-y-auto">
               <SheetHeader>
                 <SheetTitle>{appName}</SheetTitle>
               </SheetHeader>
               <div className="flex flex-col gap-6 p-4">
-                <Accordion
-                  className="flex w-full flex-col gap-4"
-                  collapsible
-                  type="single"
-                >
+                <Accordion className="flex w-full flex-col gap-4">
                   {menu.map((item) => renderMobileMenuItem(item))}
                 </Accordion>
               </div>
@@ -117,9 +111,11 @@ const renderMenuItem = (item: MenuItem) => {
         <NavigationMenuTrigger>{item.title}</NavigationMenuTrigger>
         <NavigationMenuContent className="bg-popover text-popover-foreground">
           {item.items.map((subItem) => (
-            <NavigationMenuLink asChild className="w-80" key={subItem.title}>
-              <SubMenuLink item={subItem} />
-            </NavigationMenuLink>
+            <NavigationMenuLink
+              className="w-80"
+              key={subItem.title}
+              render={<SubMenuLink item={subItem} />}
+            />
           ))}
         </NavigationMenuContent>
       </NavigationMenuItem>
@@ -129,10 +125,10 @@ const renderMenuItem = (item: MenuItem) => {
   return (
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
-        asChild
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 font-medium text-sm transition-colors hover:bg-muted hover:text-accent-foreground"
+        render={<Link to={item.url} />}
       >
-        <Link to={item.url}>{item.title}</Link>
+        {item.title}
       </NavigationMenuLink>
     </NavigationMenuItem>
   );

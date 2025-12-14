@@ -8,13 +8,15 @@
     "utils": "@/routes/-shadcn/lib/utils"
   },
   "iconLibrary": "lucide",
+  "menuAccent": "subtle",
+  "menuColor": "default",
   "registries": {
     "@shadcnblocks": {
       "url": "https://shadcnblocks.com/r/{name}"
     }
   },
   "rsc": false,
-  "style": "new-york",
+  "style": "base-vega",
   "tailwind": {
     "baseColor": "neutral",
     "config": "",
