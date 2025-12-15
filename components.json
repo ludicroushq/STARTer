@@ -11,6 +11,9 @@
   "menuAccent": "subtle",
   "menuColor": "default",
   "registries": {
+    "@basecn": {
+      "url": "https://basecn.dev/r/{name}.json"
+    },
     "@shadcnblocks": {
       "url": "https://shadcnblocks.com/r/{name}"
     }
