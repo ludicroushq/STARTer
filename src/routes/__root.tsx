@@ -20,8 +20,11 @@ type MyRouterContext = {
 };
 
 export const Route = createRootRouteWithContext<MyRouterContext>()({
-  beforeLoad: async () => {
-    const sessionResponse = await authClient().getSession();
+  beforeLoad: async ({ context }) => {
+    const sessionResponse = await context.queryClient.fetchQuery({
+      queryFn: () => authClient().getSession(),
+      queryKey: ["authClient", "getSession"],
+    });
     if (sessionResponse.error) {
       return {
         session: null,

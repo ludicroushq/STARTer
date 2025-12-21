@@ -29,6 +29,7 @@ import { Logo } from "./logo";
 type MenuItem = {
   title: string;
   url: string;
+  isExternal?: boolean;
   description?: string;
   icon?: React.ReactNode;
   items?: MenuItem[];
@@ -48,6 +49,7 @@ export function Navbar(props: NavbarProps) {
           url: "/app",
         },
         {
+          isExternal: true,
           title: "Sign Out",
           url: "/api/auth/sign-out",
         },
@@ -95,7 +97,7 @@ export function Navbar(props: NavbarProps) {
                 <Accordion className="flex w-full flex-col gap-4">
                   {menu.map((item) => renderMobileMenuItem(item))}
                 </Accordion>
-              </div>
+              </div>{" "}
             </SheetContent>
           </Sheet>
         </div>
@@ -126,7 +128,10 @@ const renderMenuItem = (item: MenuItem) => {
     <NavigationMenuItem key={item.title}>
       <NavigationMenuLink
         className="group inline-flex h-10 w-max items-center justify-center rounded-md bg-background px-4 py-2 font-medium text-sm transition-colors hover:bg-muted hover:text-accent-foreground"
-        render={<Link to={item.url} />}
+        render={
+          // biome-ignore lint/a11y/useAnchorContent: baseui
+          item.isExternal ? <a href={item.url} /> : <Link to={item.url} />
+        }
       >
         {item.title}
       </NavigationMenuLink>
@@ -150,26 +155,35 @@ const renderMobileMenuItem = (item: MenuItem) => {
     );
   }
 
+  const Component = item.isExternal ? "a" : Link;
+
   return (
-    <Link className="font-semibold text-md" key={item.title} to={item.url}>
+    <Component
+      className="font-semibold text-md"
+      key={item.title}
+      {...(item.isExternal ? { href: item.url } : { to: item.url })}
+    >
       {item.title}
-    </Link>
+    </Component>
   );
 };
 
-const SubMenuLink = ({ item }: { item: MenuItem }) => (
-  <Link
-    className="flex min-w-80 select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-accent-foreground"
-    to={item.url}
-  >
-    <div className="text-foreground">{item.icon}</div>
-    <div>
-      <div className="font-semibold text-sm">{item.title}</div>
-      {item.description ? (
-        <p className="text-muted-foreground text-sm leading-snug">
-          {item.description}
-        </p>
-      ) : null}
-    </div>
-  </Link>
-);
+const SubMenuLink = ({ item }: { item: MenuItem }) => {
+  const Component = item.isExternal ? "a" : Link;
+  return (
+    <Component
+      className="flex min-w-80 select-none flex-row gap-4 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-muted hover:text-accent-foreground"
+      {...(item.isExternal ? { href: item.url } : { to: item.url })}
+    >
+      <div className="text-foreground">{item.icon}</div>
+      <div>
+        <div className="font-semibold text-sm">{item.title}</div>
+        {item.description ? (
+          <p className="text-muted-foreground text-sm leading-snug">
+            {item.description}
+          </p>
+        ) : null}
+      </div>
+    </Component>
+  );
+};
