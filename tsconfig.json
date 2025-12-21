@@ -16,6 +16,11 @@
     "paths": {
       "@/*": ["./src/*"]
     },
+    "plugins": [
+      {
+        "name": "workflow"
+      }
+    ],
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "strict": true,

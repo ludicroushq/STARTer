@@ -4,6 +4,7 @@
 .output
 .tanstack
 .vinxi
+.workflow-data
 .wrangler
 *.db
 *.local
