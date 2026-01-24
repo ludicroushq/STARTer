@@ -14,7 +14,7 @@ We use the RPC version of ORPC. https://orpc.dev/docs/getting-started
 
 ## Routing
 
-All routes must be properly organized in `src/server/routes`. The file path should always match the RPC path. Every RPC function should be a folder containing an `index.ts`. Every sub-folder should also contain an `index.ts` which reexports the scoped routes.
+All routes be properly organized in `src/server/routes`. The file path should always match the RPC path. Every RPC function should be a folder containing an `index.ts`. Every sub-folder should also contain an `index.ts` which reexports the scoped routes.
 
 ```ts
 // src/server/routes/posts/list/index.ts
@@ -37,4 +37,4 @@ export const routes = {
 
 ## Functions
 
-ALWAYS use one of the `os` variables defined in `src/server/index.ts` depending on the data you need. If there is recurring logic consider updating the existing os to deduplicate that work or create a new one. For example if you have a concept of organizations, consider making an `export const withOrganizationOs = withUserOs.use(withOrganizationMiddleware);`
+ALWAYS use one of the `os` variables defined in `src/server/index.ts` depending on the data you need. If there is recurring logic consider update the existing os to deduplicate that work or create a new one. For example if you have a concept of organizations, consider making an `export const withOrganizationOs = withUserOs.use(withOrganizationMiddleware);`

@@ -10,7 +10,7 @@ Docs are available at: https://tanstack.com/start/latest/docs/framework/react/ov
 
 Use file-based routing with TanStack Router
 
-- `_with-user.tsx` - The route guard ensures the user exists and is signed in. Within the folder, you can access the user via context.user.
+- `_with-user.tsx` - The route guards ensures the user exists and is signed in. Within the folder, you can access the user via context.user.
 - `_without-user.tsx` - This route guard guarantees that the user is not signed in. Use it specifically for pages that should not be visited if they are signed in like the sign in page.
 - `api/` - API routes (auth handler, RPC handler, etc)
 
