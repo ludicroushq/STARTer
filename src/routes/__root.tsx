@@ -3,6 +3,7 @@ import type { QueryClient } from "@tanstack/react-query";
 import {
   createRootRouteWithContext,
   HeadContent,
+  Outlet,
   Scripts,
 } from "@tanstack/react-router";
 import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
@@ -42,6 +43,7 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
     const { session, user } = sessionResponse.data;
     return { session, user };
   },
+  component: RootComponent,
   head: () => ({
     links: [
       {
@@ -70,17 +72,13 @@ export const Route = createRootRouteWithContext<MyRouterContext>()({
 });
 
 function RootDocument({ children }: { children: React.ReactNode }) {
-  const { user } = Route.useLoaderData();
-
   return (
     <html className="h-full" lang="en">
       <head>
         <HeadContent />
       </head>
       <body className="flex h-full flex-col antialiased">
-        <Navbar user={user} />
-        <main className="grow">{children}</main>
-        <Footer />
+        {children}
 
         <Toaster />
         <TanStackDevtools
@@ -98,5 +96,19 @@ function RootDocument({ children }: { children: React.ReactNode }) {
         <Scripts />
       </body>
     </html>
+  );
+}
+
+function RootComponent() {
+  const { user } = Route.useLoaderData();
+
+  return (
+    <>
+      <Navbar user={user} />
+      <main className="grow">
+        <Outlet />
+      </main>
+      <Footer />
+    </>
   );
 }
