@@ -1,6 +1,0 @@
-[settings]
-experimental = true
-lockfile = true
-
-[tools]
-bun = "latest"
