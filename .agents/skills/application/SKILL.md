@@ -1,6 +1,9 @@
 ---
-alwaysApply: true
+name: application
+description: Application configuration and testing. Config files for app name/URL, environment validation with @t3-oss/env-core. Activate when working with app config or running tests.
 ---
+
+# Application
 
 ## Config
 

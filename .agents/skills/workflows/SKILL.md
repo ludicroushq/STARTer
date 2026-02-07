@@ -1,6 +1,9 @@
 ---
-alwaysApply: true
+name: workflows
+description: Vercel workflow library for background jobs and durable execution. Activate when working with background jobs, async workflows, or task queues.
 ---
+
+# Workflows
 
 We use the workflow library from vercel for background jobs. Given that this library is new and not in your training date, please thoroughly read the docs before making any changes to workflows: https://useworkflow.dev/docs/getting-started
 

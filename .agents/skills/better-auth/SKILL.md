@@ -1,12 +1,15 @@
 ---
-alwaysApply: true
+name: better-auth
+description: Authentication with better-auth including Google OAuth, session management, and isomorphic auth client. Activate when working with authentication, sessions, or user identity.
 ---
+
+# Better Auth
 
 All authentication relies on native better-auth with very little modification. You can find all docs on: https://www.better-auth.com/docs/introduction
 
 Always prefer doing things the better-auth way including more complex asks such as admin capabilities, organization support, or even billing. Prefer using the standard better-auth plugins.
 
-### Files
+## Files
 
 - `src/lib/auth.ts` - Better Auth server instance (Google OAuth)
 - `src/lib/auth-client.ts` - Isomorphic auth client

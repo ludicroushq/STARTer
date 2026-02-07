@@ -1,6 +1,9 @@
 ---
-alwaysApply: true
+name: drizzle
+description: Drizzle ORM v1 BETA with SQLite for database schema, relations, and queries. Activate when working with database operations, schema definitions, or migrations.
 ---
+
+# Drizzle
 
 We are using the BETA version of Drizzle v1 with SQLite. You can check the `.env` file to see where the local database is stored. You may make READ-only queries to the database if you need more information from the database.
 

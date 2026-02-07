@@ -1,6 +1,9 @@
 ---
-alwaysApply: true
+name: code-style
+description: Code style conventions for components, functions, and destructuring patterns. Activate when writing or reviewing component props, function signatures, or code structure.
 ---
+
+# Code Style
 
 On top of ensuring you comply with the Ultracite/Biome linting rules, here are some additional preferred rules.
 

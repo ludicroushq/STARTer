@@ -1,6 +1,6 @@
 ---
-description: Ultracite Rules - AI-Ready Formatter and Linter
-alwaysApply: true
+name: ultracite
+description: Ultracite/Biome linting and formatting standards for TypeScript, React, async code, security, and performance. Activate when writing or reviewing code quality, linting, or formatting.
 ---
 
 # Ultracite Code Standards

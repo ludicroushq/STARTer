@@ -1,8 +1,11 @@
 ---
-alwaysApply: true
+name: shadcn
+description: ShadCN UI component library usage and conventions. Activate when working with UI components, design system, or component library choices.
 ---
 
-When working with any shadcn components you must first pull and read the documentation for that component. You can find the full list of all components documents here: @https://ui.shadcn.com/llms.txt
+# ShadCN
+
+When working with any shadcn components you must first pull and read the documentation for that component. You can find the full list of all components documents here: https://ui.shadcn.com/llms.txt
 
 All files are stored in `src/routes/-shadcn`. You must never edit any files in this folder, not write new components to this folder. This folder is entirely automatically generated with the shadcn CLI and is excluded from linting as well.
 

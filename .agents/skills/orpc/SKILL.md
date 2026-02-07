@@ -1,6 +1,9 @@
 ---
-alwaysApply: true
+name: orpc
+description: ORPC RPC framework for server routes, middleware, and client setup. Activate when creating API endpoints, server routes, or working with the RPC layer.
 ---
+
+# ORPC
 
 We use the RPC version of ORPC. https://orpc.dev/docs/getting-started
 

@@ -1,6 +1,9 @@
 ---
-alwaysApply: true
+name: tanstack-start
+description: TanStack Start and Router conventions for routing, components, and data fetching. Activate when working with routes, loaders, components, or data fetching patterns.
 ---
+
+# TanStack Start
 
 Docs are available at: https://tanstack.com/start/latest/docs/framework/react/overview
 
