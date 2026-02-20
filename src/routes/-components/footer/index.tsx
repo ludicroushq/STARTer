@@ -1,17 +1,16 @@
 import { appName } from "@/config/app";
+import { Muted } from "@/routes/-shadcn/components/ui/typography";
 
 export function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <div className="container mx-auto border-t py-8">
-      <footer>
-        <div className="font-medium text-muted-foreground text-sm">
-          <p>
-            &copy; {year} {appName}. All rights reserved.
-          </p>
-        </div>
-      </footer>
-    </div>
+    <footer className="border-t py-8">
+      <div className="container mx-auto">
+        <Muted className="text-center">
+          &copy; {year} {appName}
+        </Muted>
+      </div>
+    </footer>
   );
 }

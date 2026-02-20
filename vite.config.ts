@@ -17,12 +17,7 @@ const config = defineConfig({
     tailwindcss(),
     tanstackStart(),
     nitro({
-      preset: "bun",
-      vercel: {
-        functions: {
-          runtime: "bun1.x",
-        },
-      },
+      preset: process.env.VERCEL ? "vercel" : "bun",
     }),
     workflow(),
     viteReact({

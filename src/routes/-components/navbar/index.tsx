@@ -50,63 +50,67 @@ export function Navbar(props: NavbarProps) {
       ];
 
   return (
-    <header className="container mx-auto border-b py-4">
-      <nav className="flex items-center justify-between">
-        <Link className="font-bold text-xl" to={user ? "/app" : "/"}>
-          {appName}
-        </Link>
+    <header className="border-b py-4">
+      <div className="container mx-auto">
+        <nav className="flex items-center justify-between">
+          <Link className="font-bold text-xl" to={user ? "/app" : "/"}>
+            {appName}
+          </Link>
 
-        <Menubar className="hidden border-none bg-transparent shadow-none md:flex">
-          {menu.map((item) => (
-            <Button
-              key={item.title}
-              render={
-                item.isExternal ? (
-                  <a href={item.url}>{item.title}</a>
-                ) : (
-                  <Link to={item.url}>{item.title}</Link>
-                )
-              }
-              size="sm"
-              variant="ghost"
-            />
-          ))}
-        </Menubar>
-
-        <Sheet>
-          <SheetTrigger
-            render={
+          <Menubar className="hidden border-none bg-transparent shadow-none md:flex">
+            {menu.map((item) => (
               <Button
-                aria-label="Toggle menu"
-                className="md:hidden"
-                size="icon"
-                variant="ghost"
-              />
-            }
-          >
-            <Menu />
-          </SheetTrigger>
-          <SheetContent side="right">
-            <SheetHeader>
-              <SheetTitle>{appName}</SheetTitle>
-            </SheetHeader>
-            <div className="flex flex-col px-2">
-              {menu.map((item) => (
-                <SheetClose
-                  key={item.title}
-                  render={<Button className="justify-start" variant="ghost" />}
-                >
-                  {item.isExternal ? (
+                key={item.title}
+                render={
+                  item.isExternal ? (
                     <a href={item.url}>{item.title}</a>
                   ) : (
                     <Link to={item.url}>{item.title}</Link>
-                  )}
-                </SheetClose>
-              ))}
-            </div>
-          </SheetContent>
-        </Sheet>
-      </nav>
+                  )
+                }
+                size="sm"
+                variant="ghost"
+              />
+            ))}
+          </Menubar>
+
+          <Sheet>
+            <SheetTrigger
+              render={
+                <Button
+                  aria-label="Toggle menu"
+                  className="md:hidden"
+                  size="icon"
+                  variant="ghost"
+                />
+              }
+            >
+              <Menu />
+            </SheetTrigger>
+            <SheetContent side="right">
+              <SheetHeader>
+                <SheetTitle>{appName}</SheetTitle>
+              </SheetHeader>
+              <div className="flex flex-col px-2">
+                {menu.map((item) => (
+                  <SheetClose
+                    key={item.title}
+                    render={
+                      <Button className="justify-start" variant="ghost" />
+                    }
+                  >
+                    {item.isExternal ? (
+                      <a href={item.url}>{item.title}</a>
+                    ) : (
+                      <Link to={item.url}>{item.title}</Link>
+                    )}
+                  </SheetClose>
+                ))}
+              </div>
+            </SheetContent>
+          </Sheet>
+        </nav>
+      </div>
     </header>
   );
 }
