@@ -2,7 +2,7 @@ import { ORPCError, onError, ValidationError } from "@orpc/server";
 import { RPCHandler } from "@orpc/server/fetch";
 import z from "zod";
 import { fromZodError } from "zod-validation-error";
-import { logger } from "@/lib/logtape";
+import { Logger } from "@/lib/logtape";
 import { routes } from "./routes";
 
 export const handler = new RPCHandler(routes, {
@@ -13,7 +13,6 @@ export const handler = new RPCHandler(routes, {
         error.code === "BAD_REQUEST" &&
         error.cause instanceof ValidationError
       ) {
-        // If you only use Zod you can safely cast to ZodIssue[]
         const zodError = new z.ZodError(
           error.cause.issues as z.core.$ZodIssue[]
         );
@@ -40,7 +39,7 @@ export const handler = new RPCHandler(routes, {
   ],
   interceptors: [
     onError((error) => {
-      logger.error(String(error));
+      Logger.error(String(error));
     }),
   ],
 });

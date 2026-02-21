@@ -33,6 +33,7 @@
     "tailwind-merge": "^3.4.0",
     "tailwindcss": "^4.0.6",
     "vite-tsconfig-paths": "^5.1.4",
+    "within-ts": "https://pkg.pr.new/ludicroushq/within-ts@992c1aa",
     "workflow": "^4.0.1-beta.35",
     "zod": "^4.1.13",
     "zod-validation-error": "^5.0.0"

@@ -5,7 +5,7 @@ import { createRouterClient } from "@orpc/server";
 import { createTanstackQueryUtils } from "@orpc/tanstack-query";
 import { createIsomorphicFn } from "@tanstack/react-start";
 import { toast } from "sonner";
-import { logger } from "@/lib/logtape";
+import { Logger } from "@/lib/logtape";
 import { routes } from "../routes";
 
 const getORPCClient = createIsomorphicFn()
@@ -23,7 +23,7 @@ const getORPCClient = createIsomorphicFn()
             return;
           }
 
-          logger.error(`${error}`);
+          Logger.error(`${error}`);
           toast.error("An unexpected error occurred.");
         }),
       ],

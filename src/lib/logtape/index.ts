@@ -1,4 +1,5 @@
 import { configureSync, getConsoleSink, getLogger } from "@logtape/logtape";
+import { Define } from "within-ts";
 import { isDevelopment } from "@/config/env";
 
 configureSync({
@@ -21,4 +22,22 @@ configureSync({
   },
 });
 
-export const logger = getLogger();
+const logtape = getLogger();
+
+export const Logger = Define.Logger<{
+  requestId?: string;
+  userId?: string;
+}>({
+  debug(entry) {
+    logtape.debug(entry.message, entry);
+  },
+  error(entry) {
+    logtape.error(entry.message, entry);
+  },
+  info(entry) {
+    logtape.info(entry.message, entry);
+  },
+  warn(entry) {
+    logtape.warn(entry.message, entry);
+  },
+});
