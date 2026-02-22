@@ -1,5 +1,12 @@
+import dotenvx from "@dotenvx/dotenvx";
 import { createEnv } from "@t3-oss/env-core";
 import { OPTIONAL_STRING, REQUIRED_STRING, REQUIRED_URL } from "./utils";
+
+dotenvx.config({
+  convention: "nextjs",
+  ignore: ["MISSING_ENV_FILE"],
+  quiet: true,
+});
 
 export const serverEnv = createEnv({
   emptyStringAsUndefined: true,

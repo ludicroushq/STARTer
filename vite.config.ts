@@ -1,4 +1,12 @@
+import dotenvx from "@dotenvx/dotenvx";
 import tailwindcss from "@tailwindcss/vite";
+
+dotenvx.config({
+  convention: "nextjs",
+  ignore: ["MISSING_ENV_FILE"],
+  quiet: true,
+});
+
 import { devtools } from "@tanstack/devtools-vite";
 import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import viteReact from "@vitejs/plugin-react";

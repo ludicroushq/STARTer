@@ -1,2 +1,6 @@
 [tools]
 bun = "1"
+
+[env]
+_.path = ["node_modules/.bin"]
+_.source = { path = ".env.development.sh", tools = true }
