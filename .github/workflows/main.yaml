@@ -8,5 +8,9 @@ concurrency: main
 
 jobs:
   test:
-    uses: ./.github/workflows/_test.yaml
-    secrets: inherit
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: ./.github/actions/setup
+
+      - run: bun run ci:test
