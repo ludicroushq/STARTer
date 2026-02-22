@@ -20,7 +20,7 @@ export class Auth extends Define.Service("Auth", () => {
     },
     appName,
     database: drizzleAdapter(db, {
-      provider: "sqlite",
+      provider: "pg",
       schema,
       usePlural: true,
     }),
@@ -33,3 +33,5 @@ export class Auth extends Define.Service("Auth", () => {
     },
   });
 }) {}
+
+export const auth = new Auth();

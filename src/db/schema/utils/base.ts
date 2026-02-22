@@ -1,15 +1,13 @@
 import { createId } from "@paralleldrive/cuid2";
-import { integer, text } from "drizzle-orm/sqlite-core";
+import { text, timestamp } from "drizzle-orm/pg-core";
 
 export const shared = {
-  createdAt: integer({ mode: "timestamp_ms" })
-    .notNull()
-    .$defaultFn(() => new Date()),
+  createdAt: timestamp({ mode: "date" }).notNull().defaultNow(),
   id: text()
     .primaryKey()
     .$defaultFn(() => createId()),
-  updatedAt: integer({ mode: "timestamp_ms" })
+  updatedAt: timestamp({ mode: "date" })
     .notNull()
-    .$defaultFn(() => new Date())
+    .defaultNow()
     .$onUpdate(() => new Date()),
 };
