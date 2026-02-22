@@ -17,6 +17,7 @@ import { Route as WithUserAppIndexRouteImport } from './routes/_with-user/app/in
 import { Route as ApiRpcSplatRouteImport } from './routes/api/rpc/$'
 import { Route as ApiAuthSignOutRouteImport } from './routes/api/auth/sign-out'
 import { Route as ApiAuthSplatRouteImport } from './routes/api/auth/$'
+import { Route as ApiWorkflowsHelloWorldIndexRouteImport } from './routes/api/workflows/hello-world/index'
 
 const WithoutUserRoute = WithoutUserRouteImport.update({
   id: '/_without-user',
@@ -57,6 +58,12 @@ const ApiAuthSplatRoute = ApiAuthSplatRouteImport.update({
   path: '/api/auth/$',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ApiWorkflowsHelloWorldIndexRoute =
+  ApiWorkflowsHelloWorldIndexRouteImport.update({
+    id: '/api/workflows/hello-world/',
+    path: '/api/workflows/hello-world/',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -65,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app': typeof WithUserAppIndexRoute
   '/get-started': typeof WithoutUserGetStartedIndexRoute
+  '/api/workflows/hello-world': typeof ApiWorkflowsHelloWorldIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -73,6 +81,7 @@ export interface FileRoutesByTo {
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/app': typeof WithUserAppIndexRoute
   '/get-started': typeof WithoutUserGetStartedIndexRoute
+  '/api/workflows/hello-world': typeof ApiWorkflowsHelloWorldIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -84,6 +93,7 @@ export interface FileRoutesById {
   '/api/rpc/$': typeof ApiRpcSplatRoute
   '/_with-user/app/': typeof WithUserAppIndexRoute
   '/_without-user/get-started/': typeof WithoutUserGetStartedIndexRoute
+  '/api/workflows/hello-world/': typeof ApiWorkflowsHelloWorldIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -94,6 +104,7 @@ export interface FileRouteTypes {
     | '/api/rpc/$'
     | '/app'
     | '/get-started'
+    | '/api/workflows/hello-world'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -102,6 +113,7 @@ export interface FileRouteTypes {
     | '/api/rpc/$'
     | '/app'
     | '/get-started'
+    | '/api/workflows/hello-world'
   id:
     | '__root__'
     | '/'
@@ -112,6 +124,7 @@ export interface FileRouteTypes {
     | '/api/rpc/$'
     | '/_with-user/app/'
     | '/_without-user/get-started/'
+    | '/api/workflows/hello-world/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -121,6 +134,7 @@ export interface RootRouteChildren {
   ApiAuthSplatRoute: typeof ApiAuthSplatRoute
   ApiAuthSignOutRoute: typeof ApiAuthSignOutRoute
   ApiRpcSplatRoute: typeof ApiRpcSplatRoute
+  ApiWorkflowsHelloWorldIndexRoute: typeof ApiWorkflowsHelloWorldIndexRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -181,6 +195,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ApiAuthSplatRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/api/workflows/hello-world/': {
+      id: '/api/workflows/hello-world/'
+      path: '/api/workflows/hello-world'
+      fullPath: '/api/workflows/hello-world'
+      preLoaderRoute: typeof ApiWorkflowsHelloWorldIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -215,6 +236,7 @@ const rootRouteChildren: RootRouteChildren = {
   ApiAuthSplatRoute: ApiAuthSplatRoute,
   ApiAuthSignOutRoute: ApiAuthSignOutRoute,
   ApiRpcSplatRoute: ApiRpcSplatRoute,
+  ApiWorkflowsHelloWorldIndexRoute: ApiWorkflowsHelloWorldIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

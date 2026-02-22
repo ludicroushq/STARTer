@@ -13,7 +13,6 @@ import viteReact from "@vitejs/plugin-react";
 import { nitro } from "nitro/vite";
 import { defineConfig } from "vite";
 import viteTsConfigPaths from "vite-tsconfig-paths";
-import { workflow } from "workflow/vite";
 
 const config = defineConfig({
   plugins: [
@@ -27,7 +26,6 @@ const config = defineConfig({
     nitro({
       preset: process.env.VERCEL ? "vercel" : "bun",
     }),
-    workflow(),
     viteReact({
       babel: {
         plugins: ["babel-plugin-react-compiler"],

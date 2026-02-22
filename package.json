@@ -19,6 +19,7 @@
     "@tanstack/react-router-ssr-query": "^1.140.5",
     "@tanstack/react-start": "^1.140.5",
     "@tanstack/router-plugin": "^1.140.5",
+    "@upstash/workflow": "^1.1.1",
     "better-auth": "^1.4.6",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
@@ -35,7 +36,6 @@
     "tailwindcss": "^4.0.6",
     "vite-tsconfig-paths": "^5.1.4",
     "within-ts": "https://pkg.pr.new/ludicroushq/within-ts@992c1aa",
-    "workflow": "^4.0.1-beta.35",
     "zod": "^4.1.13",
     "zod-validation-error": "^5.0.0"
   },
@@ -48,6 +48,7 @@
     "@types/pg": "^8.16.0",
     "@types/react": "^19.2.0",
     "@types/react-dom": "^19.2.0",
+    "@upstash/qstash-cli": "^2.32.32",
     "@vitejs/plugin-react": "^5.1.2",
     "babel-plugin-react-compiler": "^1.0.0",
     "drizzle-kit": "^1.0.0-beta.2-86f844e",
@@ -75,7 +76,8 @@
     "vite:build": "bun run --bun vite build",
     "vite:dev": "bun run --bun vite dev --port 3000",
     "vite:serve": "bun run --bun vite preview",
-    "vite:start": "bun run .output/server/index.mjs"
+    "vite:start": "bun run .output/server/index.mjs",
+    "workflows:dev": "qstash dev"
   },
   "type": "module"
 }

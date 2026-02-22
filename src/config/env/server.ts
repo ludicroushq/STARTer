@@ -1,6 +1,11 @@
 import dotenvx from "@dotenvx/dotenvx";
 import { createEnv } from "@t3-oss/env-core";
-import { OPTIONAL_STRING, REQUIRED_STRING, REQUIRED_URL } from "./utils";
+import {
+  OPTIONAL_STRING,
+  OPTIONAL_URL,
+  REQUIRED_STRING,
+  REQUIRED_URL,
+} from "./utils";
 
 dotenvx.config({
   convention: "nextjs",
@@ -17,5 +22,9 @@ export const serverEnv = createEnv({
     DATABASE_URL: REQUIRED_URL,
     GOOGLE_CLIENT_ID: OPTIONAL_STRING,
     GOOGLE_CLIENT_SECRET: OPTIONAL_STRING,
+    QSTASH_CURRENT_SIGNING_KEY: OPTIONAL_STRING,
+    QSTASH_NEXT_SIGNING_KEY: OPTIONAL_STRING,
+    QSTASH_TOKEN: OPTIONAL_STRING,
+    QSTASH_URL: OPTIONAL_URL,
   },
 });
